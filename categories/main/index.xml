@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Main on 路边社</title>
+    <link>http://pages.ki1in.xyz/categories/main/</link>
+    <description>Recent content in Main on 路边社</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 14 Jan 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://pages.ki1in.xyz/categories/main/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hello World</title>
+      <link>http://pages.ki1in.xyz/2019/01/hello-world/</link>
+      <pubDate>Mon, 14 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://pages.ki1in.xyz/2019/01/hello-world/</guid>
+      <description>Hello world!
+Hallo Welt!
+你好，世界！</description>
+    </item>
+    
+  </channel>
+</rss>

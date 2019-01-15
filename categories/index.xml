@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on 路边社</title>
+    <link>http://pages.ki1in.xyz/categories/</link>
+    <description>Recent content in Categories on 路边社</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    
+	<atom:link href="http://pages.ki1in.xyz/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Main</title>
+      <link>http://pages.ki1in.xyz/categories/main/</link>
+      <pubDate>Mon, 14 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://pages.ki1in.xyz/categories/main/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
