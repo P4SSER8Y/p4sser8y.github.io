@@ -4,4 +4,4 @@
 [submodule "public"]
 	path = public
 	url = https://github.com/P4SSER8Y/p4sser8y.github.io.git
-	branch = gh-pages
+	branch = master
