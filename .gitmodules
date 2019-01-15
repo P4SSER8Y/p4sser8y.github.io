@@ -1,3 +1,6 @@
 [submodule "themes/LeaveIt"]
 	path = themes/LeaveIt
 	url = https://github.com/P4SSER8Y/LeaveIt.git
+[submodule "public"]
+	path = public
+	url = git@github.com:P4SSER8Y/p4sser8y.github.io.git
