@@ -1,6 +1,15 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+    <url>
+      <loc>http://pages.ki1in.xyz/categories/</loc>
+      
+      <lastmod>2019-01-14T00:00:00+00:00</lastmod>
+      
+      
+      
+      
+    </url>
   
     <url>
       <loc>http://pages.ki1in.xyz/2019/01/hello-world/</loc>
@@ -13,23 +22,11 @@
     </url>
   
     <url>
-      <loc>http://pages.ki1in.xyz/categories/</loc>
-      
-      
-      
-      <priority>0</priority>
-      
-      
-    </url>
-  
-    <url>
       <loc>http://pages.ki1in.xyz/categories/main/</loc>
       
       <lastmod>2019-01-14T00:00:00+00:00</lastmod>
       
       
-      
-      <priority>0</priority>
       
       
     </url>
@@ -41,18 +38,6 @@
       
       
       
-      <priority>0</priority>
-      
-      
-    </url>
-  
-    <url>
-      <loc>http://pages.ki1in.xyz/tags/</loc>
-      
-      
-      
-      <priority>0</priority>
-      
       
     </url>
   
@@ -63,7 +48,13 @@
       
       
       
-      <priority>0</priority>
+      
+    </url>
+  
+    <url>
+      <loc>http://pages.ki1in.xyz/tags/</loc>
+      
+      
       
       
     </url>
