@@ -15,10 +15,10 @@ jobs:
       - name: setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: 'latest'
+          hugo-version: '0.70.0'
           extended: true
       - name: build
-        run: hugo --minify
+        run: hugo
       - name: deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
