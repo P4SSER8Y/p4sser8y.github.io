@@ -1,7 +1,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>路边社 on 路边社</title>
-    <link>http://p4sser8y.github.io/</link>
+    <link>https://p4sser8y.github.io/</link>
     <description>Recent content in 路边社 on 路边社</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
@@ -10,10 +10,10 @@
     
     <item>
       <title>Posts</title>
-      <link>http://p4sser8y.github.io/posts/</link>
+      <link>https://p4sser8y.github.io/posts/</link>
       <pubDate>Mon, 14 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://p4sser8y.github.io/posts/</guid>
+      <guid>https://p4sser8y.github.io/posts/</guid>
       <description></description>
     </item>
     

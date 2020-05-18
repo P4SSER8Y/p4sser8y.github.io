@@ -63,4 +63,4 @@ Disallow: /
 User-agent: ZoominfoBot
 Disallow: /
 
-Sitemap: http://p4sser8y.github.io/sitemap.xml
+Sitemap: https://p4sser8y.github.io/sitemap.xml
