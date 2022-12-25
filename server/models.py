@@ -1,4 +1,5 @@
 from peewee import *
+from playhouse.sqlite_ext import JSONField
 
 Models = []
 
@@ -12,7 +13,7 @@ def _wrapper(b):
 class Info(Model):
     uuid = UUIDField(primary_key=True)
     name = TextField()
-    info = TextField()
+    info = JSONField()
 
 
 @_wrapper

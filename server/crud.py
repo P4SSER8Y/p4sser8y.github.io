@@ -1,4 +1,4 @@
-from peewee import *
+from playhouse.sqlite_ext import SqliteExtDatabase
 from models import Models
 from loguru import logger
 import os
@@ -9,12 +9,12 @@ db_path = pathlib.Path(os.environ.get('HTF_DB_PATH', './data/database.db')).abso
 os.makedirs(db_path.parent, exist_ok=True)
 logger.info("database path: {}", db_path)
 
-db = None
+db: SqliteExtDatabase = None
 
 
 def startup():
     global db
-    db = SqliteDatabase(db_path, pragmas={'foreign_keys': 1})
+    db = SqliteExtDatabase(db_path, pragmas={'foreign_keys': 1})
     db.connect()
     db.bind(Models)
     db.create_tables(Models)
@@ -30,4 +30,6 @@ if __name__ == "__main__":
     id = uuid()
 
     startup()
+    with db.atomic() as ctx:
+        Info.create(uuid=id, name="", info={"title": "shit"})
     shutdown()
