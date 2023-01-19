@@ -1,0 +1,29 @@
+- info:
+    title: 功夫
+    poster: './assets/p2770509393.webp'
+    links: ['db:1291543', 'imdb:tt0373074']
+    tags: ['动作', '喜剧', '玄幻']
+  notes:
+    - rate: 5
+      timestamp: 1674432000
+    - rate: 5
+      timestamp: 1380240000
+
+- info:
+    title: 'Avatar: The Way of Water'
+    chineseTitle: '阿凡达：水之道'
+    poster: './assets/p2882761032.webp'
+  notes:
+    - rate: 2
+      timestamp: 1672444800
+
+- info:
+    title: 少林足球
+    poster: './assets/p2170788277.webp'
+    links: ['imdb:tt0286112']
+    tags: ['动作', '喜剧', '玄幻']
+  notes:
+    - rate: 5
+      timestamp: 1673740800
+    - rate: 5
+      timestamp: 1397952000

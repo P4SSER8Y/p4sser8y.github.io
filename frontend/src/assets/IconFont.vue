@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import 'src/assets/iconfont';
+import 'src/3rdparty/iconfont';
 
 const props = defineProps<{
     name: string;

@@ -11,10 +11,18 @@
                     </q-avatar>
                     How Time Flies
                 </q-toolbar-title>
+
                 <q-btn
                     dense
                     flat
-                    round
+                    square
+                    icon="add"
+                    @click="toggleAddMovieRecord"
+                ></q-btn>
+                <q-btn
+                    dense
+                    flat
+                    square
                     icon="menu"
                     @click="toggleRightDrawer"
                 />
@@ -40,11 +48,18 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useQuasar } from 'quasar';
+import AddMovieRecordDialog from './components/AddMovieRecordDialog.vue';
 const $q = useQuasar();
 $q.dark.set(true);
 
 const rightDrawerOpen = ref(false);
 function toggleRightDrawer(): void {
     rightDrawerOpen.value = !rightDrawerOpen.value;
+}
+
+function toggleAddMovieRecord(): void {
+    $q.dialog({
+        component: AddMovieRecordDialog,
+    });
 }
 </script>
