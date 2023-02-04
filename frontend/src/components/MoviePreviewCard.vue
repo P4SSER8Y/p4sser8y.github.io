@@ -3,7 +3,7 @@
         <q-card flat>
             <q-img
                 v-if="props.data.info.poster"
-                :src="props.data.info.poster"
+                :src="formatAssets(props.data.info.poster)"
                 :ratio="3 / 4"
                 fit="cover"
                 loading="lazy"
@@ -27,7 +27,7 @@
                 ></q-rating>
                 <div v-if="latestNote">
                     {{ formatted_date(latestNote.timestamp) }}
-                    <q-badge v-if="sortedNotes">
+                    <q-badge v-if="sortedNotes && sortedNotes.length > 1">
                         {{ sortedNotes.length }}
                     </q-badge>
                 </div>
@@ -65,20 +65,22 @@ import { computed } from 'vue';
 import { MovieRecord } from './models';
 import dayjs from 'dayjs';
 import IconFont from 'src/assets/IconFont.vue';
+import { useRoute } from 'vue-router';
 
+const route = useRoute();
 const props = defineProps<{
     width: number;
     data: MovieRecord;
 }>();
 
-function formatted_date(timestamp: number): string {
-    return dayjs.unix(timestamp).format('YYYY-MM-DD');
+function formatted_date(timestamp: string): string {
+    return dayjs(timestamp).format('YYYY-MM-DD');
 }
 
 const sortedNotes = computed(() => {
     if (!props.data.notes) return null;
     let temp = props.data.notes;
-    temp.sort((a, b) => b.timestamp - a.timestamp);
+    temp.sort((a, b) => dayjs(b.timestamp).diff(a.timestamp));
     return temp;
 });
 
@@ -117,10 +119,15 @@ const doubanLink = computed(() =>
         .filter((x) => x)
         .at(0)
 );
+
 const imdbLink = computed(() =>
     props.data.info.links
         ?.map(parseImdbLink)
         .filter((x) => x)
         .at(0)
 );
+
+function formatAssets(link: string): string {
+    return `${route.params.user}/assets/${link}`;
+}
 </script>

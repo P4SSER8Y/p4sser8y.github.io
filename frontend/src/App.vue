@@ -1,7 +1,7 @@
 <template>
-    <q-layout view="hHr lpr fFr">
+    <q-layout view="hHh lpR fFf">
         <q-header class="bg-primary text-white">
-            <q-toolbar>
+            <!-- <q-toolbar>
                 <q-toolbar-title>
                     <q-avatar>
                         <img
@@ -26,7 +26,7 @@
                     icon="menu"
                     @click="toggleRightDrawer"
                 />
-            </q-toolbar>
+            </q-toolbar> -->
         </q-header>
 
         <q-drawer
@@ -40,7 +40,9 @@
         </q-drawer>
 
         <q-page-container>
-            <router-view />
+            <q-scroll-area style="height: 100vh; width: 100vw;">
+                <router-view />
+            </q-scroll-area>
         </q-page-container>
     </q-layout>
 </template>
@@ -48,7 +50,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useQuasar } from 'quasar';
-import AddMovieRecordDialog from './components/AddMovieRecordDialog.vue';
+// import AddMovieRecordDialog from './components/AddMovieRecordDialog.vue';
 const $q = useQuasar();
 $q.dark.set(true);
 
@@ -57,9 +59,9 @@ function toggleRightDrawer(): void {
     rightDrawerOpen.value = !rightDrawerOpen.value;
 }
 
-function toggleAddMovieRecord(): void {
-    $q.dialog({
-        component: AddMovieRecordDialog,
-    });
-}
+// function toggleAddMovieRecord(): void {
+//     $q.dialog({
+//         component: AddMovieRecordDialog,
+//     });
+// }
 </script>

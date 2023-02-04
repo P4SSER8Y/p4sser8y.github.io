@@ -1,0 +1,70 @@
+info:
+  title: 满江红
+  poster: 'p2886441838.webp'
+  links: ['db:35766491']
+  tags: ['悬疑', '喜剧']
+  year: 2023
+notes:
+  - rate: 3
+    timestamp: 2023-01-23
+    where: 电影院
+
+---
+
+info:
+  title: 流浪地球2
+  poster: 'p2886792276.webp'
+  links: ['db:35267208']
+  tags: ['科幻', '灾难']
+  year: 2023
+notes:
+  - rate: 5
+    timestamp: 2023-01-22
+    where: 电影院
+  - rate: 5
+    timestamp: 2023-02-04
+    where: 电影院
+
+---
+
+info:
+  title: 功夫
+  poster: 'p2770509393.webp'
+  links: ['db:1291543', 'imdb:tt0373074']
+  tags: ['动作', '喜剧', '玄幻']
+  year: 2001
+notes:
+  - rate: 5
+    timestamp: 2023-01-16
+    where: Bilibili
+  - rate: 5
+    timestamp: 2013-09-27
+    where: 下载
+
+---
+
+info:
+  title: 'Avatar: The Way of Water'
+  chineseTitle: '阿凡达：水之道'
+  poster: 'p2882761032.webp'
+notes:
+  - rate: 2
+    timestamp: 2022-12-31
+    where: 电影院
+
+---
+
+info:
+  title: 少林足球
+  poster: 'p2170788277.webp'
+  links: ['imdb:tt0286112', 'db:1297747']
+  tags: ['动作', '喜剧', '玄幻']
+notes:
+  - rate: 5
+    timestamp: 2023-01-15
+    where: Bilibili
+  - rate: 5
+    timestamp: 2014-04-20
+    where: 下载
+
+---

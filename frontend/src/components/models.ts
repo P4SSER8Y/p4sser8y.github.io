@@ -5,7 +5,7 @@ export interface MovieRecord {
 
 export interface Note {
     rate: number;
-    timestamp: number;
+    timestamp: string;
     comment?: string;
 }
 
