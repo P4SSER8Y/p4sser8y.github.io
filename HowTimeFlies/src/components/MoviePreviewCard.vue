@@ -12,8 +12,8 @@
                 <div class="text-h6 text-weight-bold">
                     {{ props.data.info.title }}
                 </div>
-                <div v-if="props.data.info.chineseTitle" class="text-subtitle1">
-                    {{ props.data.info.chineseTitle }}
+                <div v-if="props.data.info.localTitle" class="text-subtitle1">
+                    {{ props.data.info.localTitle }}
                 </div>
                 <q-rating
                     v-if="latestNote"

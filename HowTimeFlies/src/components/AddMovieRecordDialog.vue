@@ -10,7 +10,7 @@
                 <q-card-section>
                     <q-card-section>
                         <q-input
-                            v-model="chineseTitle"
+                            v-model="localTitle"
                             label="Chinese"
                         ></q-input>
                     </q-card-section>
@@ -83,7 +83,7 @@ const { dialogRef, onDialogHide, onDialogOK, onDialogCancel } =
     useDialogPluginComponent();
 
 const title = ref('');
-const chineseTitle = ref('');
+const localTitle = ref('');
 const comment = ref('');
 const rate = ref(0);
 const date = ref(dayjs().format('YYYY-MM-DD'));

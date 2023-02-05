@@ -11,7 +11,7 @@ export interface Note {
 
 export interface MovieInfo {
     title: string;
-    chineseTitle?: string;
+    localTitle?: string;
     poster?: string;
     thumbnail?: string;
     links?: string[];
