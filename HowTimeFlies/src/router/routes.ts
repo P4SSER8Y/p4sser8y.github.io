@@ -17,6 +17,11 @@ const routes: RouteRecordRaw[] = [
                 props: true,
             },
             {
+                path: 'timeline',
+                component: () => import('src/pages/TimelineWall.vue'),
+                props: true,
+            },
+            {
                 path: ':catchAll(.*)',
                 component: () => import('src/pages/RedirectToHome.vue'),
                 props: true,

@@ -5,6 +5,8 @@ export const useViewConfigStore = defineStore('viewConfig', {
         user: '',
         detailedInfo: true,
         merged: true,
+        lastPage: '',
+        classifyFormat: 'YYYY-MM',
     }),
 
     getters: {},
