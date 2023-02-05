@@ -1,6 +1,6 @@
 <template>
-    <ErrorNotFound v-if="data.length == 0"></ErrorNotFound>
-    <CardLayout v-else :data="data"></CardLayout>
+    <ErrorNotFound v-if="filteredData.length == 0"></ErrorNotFound>
+    <CardLayout v-else :data="filteredData"></CardLayout>
 
     <q-page-sticky>
         <q-btn
@@ -14,7 +14,7 @@
 <script setup lang="ts">
 import ErrorNotFound from './ErrorNotFound.vue';
 import CardLayout from 'src/layouts/CardLayout.vue';
-import { ref, onMounted, watch } from 'vue';
+import { ref, onMounted, watch, computed } from 'vue';
 import { api } from 'boot/axios';
 import { MovieRecord } from 'src/components/models';
 import { useMeta, useQuasar } from 'quasar';
@@ -29,6 +29,23 @@ const $q = useQuasar();
 
 const route = useRoute();
 const data = ref<MovieRecord[]>([]);
+
+const filteredData = computed(() => {
+    if (viewConfig.merged.value) {
+        return data.value;
+    } else {
+        let tmp: MovieRecord[] = [];
+        for (let movie of data.value ?? []) {
+            for (let record of movie.notes ?? []) {
+                tmp.push({
+                    info: movie.info,
+                    notes: [record],
+                });
+            }
+        }
+        return tmp;
+    }
+});
 
 onMounted(async () => {
     await update();

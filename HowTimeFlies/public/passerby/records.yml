@@ -60,6 +60,8 @@ info:
   title: 'Avatar: The Way of Water'
   chineseTitle: '阿凡达：水之道'
   poster: 'p2882761032.webp'
+  tags: ['动作', '科幻']
+  year: 2022
 notes:
   - rate: 2
     timestamp: 2022-12-31
@@ -72,6 +74,7 @@ info:
   poster: 'p2170788277.webp'
   links: ['imdb:tt0286112', 'db:1297747']
   tags: ['动作', '喜剧', '玄幻']
+  year: 2001
 notes:
   - rate: 5
     timestamp: 2023-01-15

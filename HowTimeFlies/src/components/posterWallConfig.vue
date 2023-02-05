@@ -10,9 +10,14 @@
                 </q-input>
             </q-card-section>
             <q-card-section>
-                <q-toggle v-model="viewConfig.detailedInfo.value"
-                    >Information</q-toggle
-                >
+                <q-toggle v-model="viewConfig.detailedInfo.value">
+                    Information
+                </q-toggle>
+            </q-card-section>
+            <q-card-section>
+                <q-toggle v-model="viewConfig.merged.value">
+                    Merge Same Movie
+                </q-toggle>
             </q-card-section>
         </q-card>
     </q-dialog>
