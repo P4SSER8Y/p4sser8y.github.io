@@ -8,7 +8,7 @@
                 fit="cover"
                 loading="lazy"
             ></q-img>
-            <q-card-section class="text-body2">
+            <q-card-section v-if="viewConfig.detailedInfo.value" class="text-body2">
                 <div class="text-h6 text-weight-bold">
                     {{ props.data.info.title }}
                 </div>
@@ -65,9 +65,10 @@ import { computed } from 'vue';
 import { MovieRecord } from './models';
 import dayjs from 'dayjs';
 import IconFont from 'src/assets/IconFont.vue';
-import { useRoute } from 'vue-router';
+import { useViewConfigStore } from 'src/stores/viewConfig';
+import { storeToRefs } from 'pinia';
 
-const route = useRoute();
+const viewConfig = storeToRefs(useViewConfigStore());
 const props = defineProps<{
     width: number;
     data: MovieRecord;
@@ -128,6 +129,6 @@ const imdbLink = computed(() =>
 );
 
 function formatAssets(link: string): string {
-    return `${route.params.user}/assets/${link}`;
+    return `${viewConfig.user.value}/assets/${link}`;
 }
 </script>

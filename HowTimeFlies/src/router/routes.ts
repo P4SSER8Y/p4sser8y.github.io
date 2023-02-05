@@ -2,7 +2,7 @@ import { RouteRecordRaw } from 'vue-router';
 
 const routes: RouteRecordRaw[] = [
     {
-        path: '/:user',
+        path: '/',
         component: () => import('src/layouts/MovieLayout.vue'),
         props: true,
         children: [

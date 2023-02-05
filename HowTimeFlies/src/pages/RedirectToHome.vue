@@ -6,6 +6,6 @@ const router = useRouter();
 const props = defineProps<{ user?: string }>();
 
 onMounted(() => {
-    router.push(`/${props.user}/posterWall`);
+    router.push(`/posterWall`);
 });
 </script>
