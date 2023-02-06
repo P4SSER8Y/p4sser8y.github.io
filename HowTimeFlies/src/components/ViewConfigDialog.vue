@@ -12,6 +12,10 @@
                     ]"
                 ></q-btn-toggle>
             </q-card-section>
+            <q-separator />
+            <q-card-section>
+                <div class="text-h5">Configuration</div>
+            </q-card-section>
             <q-card-section>
                 <div class="main text-h6">
                     <span>User</span>
@@ -39,6 +43,21 @@
                     >
                     </q-btn-toggle>
                 </div>
+            </q-card-section>
+            <q-separator />
+            <q-card-section>
+                <div class="text-h5">About</div>
+            </q-card-section>
+            <q-card-section>
+                Powered by
+                <a href="https://quasar.dev/"
+                    ><q-chip outline color="secondary">
+                        <q-avatar
+                            icon="img:https://cdn.quasar.dev/logo-v2/svg/logo.svg"
+                        />
+                        Quasar
+                    </q-chip></a
+                >
             </q-card-section>
         </q-card>
     </q-dialog>
