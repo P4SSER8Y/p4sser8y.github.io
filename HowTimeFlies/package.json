@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
+    "@types/lodash-es": "^4.17.6",
     "axios": "^0.21.1",
     "dayjs": "^1.11.7",
     "pinia": "^2.0.30",

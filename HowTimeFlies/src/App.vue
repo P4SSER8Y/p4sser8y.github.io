@@ -16,15 +16,16 @@
 <script setup lang="ts">
 import { onMounted, watch } from 'vue';
 import { useQuasar } from 'quasar';
-const $q = useQuasar();
-$q.dark.set(true);
-
 import { useDataStore } from './stores/data';
 import { useViewConfigStore } from './stores/viewConfig';
 import { storeToRefs } from 'pinia';
 import { parseAllDocuments } from 'yaml';
 import { api } from 'boot/axios';
 import ViewConfigDialog from 'src/components/ViewConfigDialog.vue';
+import throttle from 'lodash/throttle';
+
+const $q = useQuasar();
+$q.dark.set(true);
 
 const viewConfig = storeToRefs(useViewConfigStore());
 const data = storeToRefs(useDataStore());
@@ -33,9 +34,10 @@ onMounted(async () => {
     await update();
 });
 
-watch(viewConfig.user, update);
+watch(viewConfig.user, throttle(update, 500, { trailing: true }));
 
 async function update() {
+    console.log('update');
     try {
         let raw = await api.get(`${viewConfig.user.value}/records.yml`);
         data.data.value = raw

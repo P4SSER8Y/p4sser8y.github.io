@@ -52,7 +52,7 @@ import { useRouter } from 'vue-router';
 
 const router = useRouter();
 
-const { dialogRef } = useDialogPluginComponent();
+const { dialogRef, onDialogHide } = useDialogPluginComponent();
 
 const viewConfig = storeToRefs(useViewConfigStore());
 
