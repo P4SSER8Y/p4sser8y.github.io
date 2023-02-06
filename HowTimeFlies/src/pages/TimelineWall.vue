@@ -26,6 +26,7 @@ import { useDataStore } from 'src/stores/data';
 import { MovieRecord } from 'src/components/models';
 import dayjs from 'dayjs';
 import CardLayout from 'src/layouts/CardLayout.vue';
+import ErrorNotFound from './ErrorNotFound.vue';
 
 const viewConfig = storeToRefs(useViewConfigStore());
 const data = storeToRefs(useDataStore());

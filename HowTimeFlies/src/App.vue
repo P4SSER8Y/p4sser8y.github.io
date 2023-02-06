@@ -36,12 +36,16 @@ onMounted(async () => {
 watch(viewConfig.user, update);
 
 async function update() {
-    let raw = await api.get(`${viewConfig.user.value}/records.yml`);
-    data.data.value = raw
-        ? parseAllDocuments(raw.data)
-              .map((x) => x.toJS())
-              .filter((x) => x)
-        : [];
+    try {
+        let raw = await api.get(`${viewConfig.user.value}/records.yml`);
+        data.data.value = raw
+            ? parseAllDocuments(raw.data)
+                  .map((x) => x.toJS())
+                  .filter((x) => x)
+            : [];
+    } catch (e) {
+        data.data.value = [];
+    }
 }
 
 function openConfig() {
