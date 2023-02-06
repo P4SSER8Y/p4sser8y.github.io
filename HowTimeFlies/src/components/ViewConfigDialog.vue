@@ -7,8 +7,8 @@
                     spread
                     @update:model-value="switchPage"
                     :options="[
-                        { label: 'Timeline', value: 'timeline' },
-                        { label: 'Poster Wall', value: 'posterWall' },
+                        { icon: 'timeline', value: 'timeline' },
+                        { icon: 'date_range', value: 'posterWall' },
                     ]"
                 ></q-btn-toggle>
             </q-card-section>
@@ -33,8 +33,8 @@
                         no-caps
                         rounded
                         :options="[
-                            { label: 'Year', value: 'YYYY' },
-                            { label: 'Year-Month', value: 'YYYY-MM' },
+                            { label: 'Y', value: 'YYYY' },
+                            { label: 'YM', value: 'YYYY-MM' },
                         ]"
                     >
                     </q-btn-toggle>
