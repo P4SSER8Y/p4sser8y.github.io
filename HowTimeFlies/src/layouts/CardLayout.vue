@@ -53,12 +53,11 @@ onUnmounted(() => {
 });
 
 function foobar() {
-    let clientWidth = main.value?.$el.clientWidth;
-    if (clientWidth > 2 * (props.maxElementWidth + 2 * props.margin)) {
-        elementWidth.value = props.maxElementWidth;
-        col.value = Math.floor(
-            clientWidth / (elementWidth.value + 2 * props.margin)
-        );
+    let clientWidth = main.value?.$el.clientWidth * 0.95;
+    let cellWidth = props.maxElementWidth + 2 * props.margin;
+    if (clientWidth > 2 * cellWidth) {
+        col.value = Math.round(clientWidth / cellWidth);
+        elementWidth.value = clientWidth / col.value;
     } else {
         col.value = 2;
         elementWidth.value = (clientWidth - col.value * props.margin * 2) / 2;
