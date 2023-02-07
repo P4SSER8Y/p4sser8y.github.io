@@ -8,7 +8,7 @@
                     @update:model-value="switchPage"
                     :options="[
                         { icon: 'timeline', value: 'timeline' },
-                        { icon: 'date_range', value: 'posterWall' },
+                        { icon: 'view_comfy', value: 'posterWall' },
                     ]"
                 ></q-btn-toggle>
             </q-card-section>
