@@ -37,7 +37,6 @@ onMounted(async () => {
 watch(viewConfig.user, throttle(update, 500, { trailing: true }));
 
 async function update() {
-    console.log('update');
     try {
         let raw = await api.get(`${viewConfig.user.value}/records.yml`);
         data.data.value = raw
