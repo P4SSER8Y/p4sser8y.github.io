@@ -12,12 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import {
-    Record,
-    isTvRecord,
-    isMovieRecord,
-    get_latest_timestamp,
-} from 'src/components/models';
+import { Record, get_latest_timestamp } from 'src/components/models';
 import { VueFlexWaterfall } from 'vue-flex-waterfall';
 import PreviewCard from 'src/components/PreviewCard.vue';
 import { computed, ref, onMounted, onUnmounted } from 'vue';

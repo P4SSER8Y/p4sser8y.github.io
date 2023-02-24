@@ -1,4 +1,4 @@
-import dayjs, { Dayjs } from "dayjs";
+import dayjs, { Dayjs } from 'dayjs';
 
 export interface Record {
     type: string;
@@ -80,12 +80,13 @@ export function sever_record(record: Record): Record[] {
     return ret;
 }
 
-export function get_latest_timestamp(record:Record): Dayjs {
+export function get_latest_timestamp(record: Record): Dayjs {
     let ret: Dayjs | undefined = undefined;
     if (isMovieRecord(record)) {
-        ret = record.notes?.map((x) => (dayjs(x.timestamp))).reduce((a, b) => (a > b ? a : b));
-    }
-    else if (isTvRecord(record)) {
+        ret = record.notes
+            ?.map((x) => dayjs(x.timestamp))
+            .reduce((a, b) => (a > b ? a : b));
+    } else if (isTvRecord(record)) {
         ret = record.notes
             ?.map((x) =>
                 x.eposides

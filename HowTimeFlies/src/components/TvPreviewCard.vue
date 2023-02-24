@@ -10,7 +10,12 @@
         <q-card-section v-if="viewConfig.detailedInfo.value" class="text-body2">
             <div class="text-h6 text-weight-bold">
                 {{ props.data.info.title }}
-                <q-badge v-if="props.data.info.season" align="top" outline rounded>
+                <q-badge
+                    v-if="props.data.info.season"
+                    align="top"
+                    outline
+                    rounded
+                >
                     {{ props.data.info.season }}
                 </q-badge>
             </div>
@@ -54,7 +59,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted } from 'vue';
+import { computed } from 'vue';
 import { TvNote, TvRecord } from './models';
 import dayjs, { Dayjs } from 'dayjs';
 import { useViewConfigStore } from 'src/stores/viewConfig';

@@ -10,11 +10,6 @@ import { isMovieRecord, isTvRecord, Record } from './models';
 import MoviePreviewCard from './MoviePreviewCard.vue';
 import TvPreviewCard from './TvPreviewCard.vue';
 
-const MAP = [
-    [isMovieRecord, MoviePreviewCard],
-    [isTvRecord, TvPreviewCard],
-];
-
 const card = computed(() => {
     if (isMovieRecord(props.data)) {
         return MoviePreviewCard;

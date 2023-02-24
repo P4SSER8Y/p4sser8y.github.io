@@ -51,7 +51,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted } from 'vue';
+import { computed } from 'vue';
 import { MovieRecord } from './models';
 import dayjs from 'dayjs';
 import { useViewConfigStore } from 'src/stores/viewConfig';
