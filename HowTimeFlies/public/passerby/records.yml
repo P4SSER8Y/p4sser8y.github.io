@@ -1,3 +1,78 @@
+type: tv
+info:
+  title: 痛いのは嫌なので防御力に極振りしたいと思います。Ⅱ
+  localTitle: 因为太怕痛就全点防御力了Ⅱ
+  poster: p2886328612.webp
+  links: ['db:35014448']
+  tags: ['喜剧', '动作', '日本']
+  year: 2023
+  season: 2
+  eposides: 12
+notes:
+  - status: suspended
+    rate: 3
+    eposides:
+      - timestamp: 2023-01-15
+        eposide: 1
+
+---
+
+type: tv
+info:
+  title: お兄ちゃんはおしまい！
+  localTitle: 别当欧尼酱了！
+  poster: p2884743880.webp
+  links: ['db:35880801']
+  tags: ['喜剧', '百合']
+  year: 2023
+  season: 1
+  eposides: 12
+notes:
+  - status: ing
+    rate: 4
+    eposides:
+      - timestamp: 2023-02-19
+        eposide: 6
+      - timestamp: 2023-02-12
+        eposide: 5
+      - timestamp: 2023-02-05
+        eposide: 4
+      - timestamp: 2023-01-22
+        eposide: 3
+      - timestamp: 2023-01-15
+        eposide: 2
+      - timestamp: 2023-01-08
+        eposide: 1
+
+---
+
+type: tv
+info:
+  title: 狂飙
+  poster: 'p2887819621.webp'
+  links: ['db:35465232']
+  tags: ['犯罪']
+  year: 2023
+  season: 1
+  eposides: 39
+notes:
+  - status: ing
+    rate: 5
+    eposides:
+      - timestamp: 2023-02-18
+        eposide: 5
+      - timestamp: 2023-02-18
+        eposide: 4
+      - timestamp: 2023-02-12
+        eposide: 3
+      - timestamp: 2023-02-12
+        eposide: 2
+      - timestamp: 2023-02-12
+        eposide: 1
+
+---
+
+type: movie
 info:
   title: 流浪地球
   poster: 'p2542316946.webp'
@@ -11,6 +86,7 @@ notes:
 
 ---
 
+type: movie
 info:
   title: 满江红
   poster: 'p2886441838.webp'
@@ -24,6 +100,7 @@ notes:
 
 ---
 
+type: movie
 info:
   title: 流浪地球2
   poster: 'p2886792276.webp'
@@ -40,6 +117,7 @@ notes:
 
 ---
 
+type: movie
 info:
   title: 功夫
   poster: 'p2770509393.webp'
@@ -56,6 +134,7 @@ notes:
 
 ---
 
+type: movie
 info:
   title: 'Avatar: The Way of Water'
   localTitle: '阿凡达：水之道'
@@ -69,6 +148,7 @@ notes:
 
 ---
 
+type: movie
 info:
   title: 少林足球
   poster: 'p2170788277.webp'

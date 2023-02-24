@@ -7,7 +7,7 @@
 import ErrorNotFound from './ErrorNotFound.vue';
 import CardLayout from 'src/layouts/CardLayout.vue';
 import { onMounted, computed } from 'vue';
-import { MovieRecord } from 'src/components/models';
+import { Record, sever_record } from 'src/components/models';
 import { useMeta } from 'quasar';
 import { useViewConfigStore } from 'src/stores/viewConfig';
 import { storeToRefs } from 'pinia';
@@ -20,14 +20,9 @@ const filteredData = computed(() => {
     if (viewConfig.merged.value) {
         return data.data.value;
     } else {
-        let tmp: MovieRecord[] = [];
-        for (let movie of data.data.value ?? []) {
-            for (let record of movie.notes ?? []) {
-                tmp.push({
-                    info: movie.info,
-                    notes: [record],
-                });
-            }
+        let tmp: Record[] = [];
+        for (let record of data.data.value ?? []) {
+            tmp = tmp.concat(sever_record(record));
         }
         return tmp;
     }

@@ -1,26 +1,30 @@
 <template>
     <VueFlexWaterfall :col="col" align-content="center" ref="main">
-        <MoviePreviewCard
+        <PreviewCard
             :style="'margin: ' + props.margin + 'px'"
             v-for="(item, index) in sortedData"
             :data="item"
             :width="elementWidth"
             :key="index"
         >
-        </MoviePreviewCard>
+        </PreviewCard>
     </VueFlexWaterfall>
 </template>
 
 <script setup lang="ts">
-import { MovieRecord } from 'src/components/models';
+import {
+    Record,
+    isTvRecord,
+    isMovieRecord,
+    get_latest_timestamp,
+} from 'src/components/models';
 import { VueFlexWaterfall } from 'vue-flex-waterfall';
-import MoviePreviewCard from 'src/components/MoviePreviewCard.vue';
+import PreviewCard from 'src/components/PreviewCard.vue';
 import { computed, ref, onMounted, onUnmounted } from 'vue';
-import dayjs from 'dayjs';
 
 const props = withDefaults(
     defineProps<{
-        data: MovieRecord[];
+        data: Record[];
         margin?: number;
         maxElementWidth?: number;
     }>(),
@@ -36,11 +40,9 @@ const col = ref(2);
 
 const sortedData = computed(() => {
     let temp = props.data;
-    const fn = (x: MovieRecord) =>
-        x.notes
-            ? Math.max(...x.notes.map((x) => dayjs(x.timestamp).unix()))
-            : 0;
-    return temp.sort((a, b) => fn(b) - fn(a));
+    return temp.sort((a, b) =>
+        get_latest_timestamp(b).diff(get_latest_timestamp(a))
+    );
 });
 
 onMounted(() => {

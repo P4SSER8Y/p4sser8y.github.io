@@ -10,12 +10,15 @@
         <q-card-section v-if="viewConfig.detailedInfo.value" class="text-body2">
             <div class="text-h6 text-weight-bold">
                 {{ props.data.info.title }}
+                <q-badge v-if="props.data.info.season" align="top" outline rounded>
+                    {{ props.data.info.season }}
+                </q-badge>
             </div>
             <div v-if="props.data.info.localTitle" class="text-subtitle1">
                 {{ props.data.info.localTitle }}
             </div>
             <q-rating
-                v-if="latestNote"
+                v-if="latestNote?.rate"
                 :model-value="latestNote.rate"
                 color="red"
                 no-dimming
@@ -25,7 +28,7 @@
                 readonly
             ></q-rating>
             <div v-if="latestNote">
-                {{ formatted_date(latestNote.timestamp) }}
+                {{ formatted_date(get_note_timestamp(latestNote)) }}
                 <q-badge v-if="sortedNotes && sortedNotes.length > 1">
                     {{ sortedNotes.length }}
                 </q-badge>
@@ -52,35 +55,34 @@
 
 <script setup lang="ts">
 import { computed, onMounted } from 'vue';
-import { MovieRecord } from './models';
-import dayjs from 'dayjs';
+import { TvNote, TvRecord } from './models';
+import dayjs, { Dayjs } from 'dayjs';
 import { useViewConfigStore } from 'src/stores/viewConfig';
 import { storeToRefs } from 'pinia';
 import DatabaseLink from './DatabaseLink.vue';
 
 const viewConfig = storeToRefs(useViewConfigStore());
 const props = defineProps<{
-    data: MovieRecord;
+    data: TvRecord;
 }>();
 
-function formatted_date(timestamp: string): string {
+function formatted_date(timestamp: string | Dayjs): string {
     return dayjs(timestamp).format('YYYY-MM-DD');
 }
 
+function get_note_timestamp(note: TvNote) {
+    return note.eposides
+        .map((x) => dayjs(x.timestamp))
+        .reduce((a, b) => (a > b ? a : b));
+}
+
 const sortedNotes = computed(() => {
-    if (!props.data.notes) return null;
     let temp = props.data.notes;
-    temp.sort((a, b) => dayjs(b.timestamp).diff(a.timestamp));
+    temp?.sort((a, b) => get_note_timestamp(a).diff(get_note_timestamp(b)));
     return temp;
 });
 
-const latestNote = computed(() =>
-    sortedNotes.value
-        ? sortedNotes.value?.length > 0
-            ? sortedNotes.value[0]
-            : null
-        : null
-);
+const latestNote = computed(() => sortedNotes?.value?.at(0));
 
 function formatAssets(link: string): string {
     return `${viewConfig.user.value}/assets/${link}`;

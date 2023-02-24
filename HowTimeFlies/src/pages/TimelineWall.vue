@@ -23,8 +23,7 @@ import { computed, onMounted } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useViewConfigStore } from 'src/stores/viewConfig';
 import { useDataStore } from 'src/stores/data';
-import { MovieRecord } from 'src/components/models';
-import dayjs from 'dayjs';
+import { get_latest_timestamp, Record, sever_record } from 'src/components/models';
 import CardLayout from 'src/layouts/CardLayout.vue';
 import ErrorNotFound from './ErrorNotFound.vue';
 
@@ -37,24 +36,18 @@ onMounted(async () => {
 
 interface ClassifiedMovieRecords {
     title: string;
-    records: MovieRecord[];
+    records: Record[];
 }
 
+const splitedRecords = computed(() => data.data.value.map((x) => sever_record(x)).reduce((a, b) => a.concat(b), []));
+
 const classifiedData = computed(() => {
-    let map = new Map<string, MovieRecord[]>();
-    for (let movie of data.data.value ?? []) {
-        for (let record of movie.notes ?? []) {
-            let key = dayjs(record.timestamp).format(
-                viewConfig.classifyFormat.value
-            );
-            let value: MovieRecord = {
-                info: movie.info,
-                notes: [record],
-            };
-            let values: MovieRecord[] = map.get(key) ?? [];
-            values.push(value);
-            map.set(key, values);
-        }
+    let map = new Map<string, Record[]>();
+    for (let record of splitedRecords.value) {
+        let key = get_latest_timestamp(record).format(viewConfig.classifyFormat.value);
+        let values  = map.get(key) ?? [];
+        values.push(record);
+        map.set(key, values);
     }
 
     let tmp: ClassifiedMovieRecords[] = [];
