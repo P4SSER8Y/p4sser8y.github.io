@@ -23,7 +23,12 @@ import { computed, onMounted } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useViewConfigStore } from 'src/stores/viewConfig';
 import { useDataStore } from 'src/stores/data';
-import { get_latest_timestamp, Record, sever_record } from 'src/components/models';
+import {
+    classify_by_timestamp_format,
+    get_latest_timestamp,
+    Record,
+    sever_record,
+} from 'src/models/models';
 import CardLayout from 'src/layouts/CardLayout.vue';
 import ErrorNotFound from './ErrorNotFound.vue';
 
@@ -39,13 +44,23 @@ interface ClassifiedMovieRecords {
     records: Record[];
 }
 
-const splitedRecords = computed(() => data.data.value.map((x) => sever_record(x)).reduce((a, b) => a.concat(b), []));
+const splitedRecords = computed(() =>
+    data.data.value
+        .map((x) =>
+            classify_by_timestamp_format(x, viewConfig.classifyFormat.value)
+        )
+        .reduce((a, b) => a.concat(b))
+        .map(sever_record)
+        .reduce((a, b) => a.concat(b))
+);
 
 const classifiedData = computed(() => {
     let map = new Map<string, Record[]>();
     for (let record of splitedRecords.value) {
-        let key = get_latest_timestamp(record).format(viewConfig.classifyFormat.value);
-        let values  = map.get(key) ?? [];
+        let key = get_latest_timestamp(record).format(
+            viewConfig.classifyFormat.value
+        );
+        let values = map.get(key) ?? [];
         values.push(record);
         map.set(key, values);
     }

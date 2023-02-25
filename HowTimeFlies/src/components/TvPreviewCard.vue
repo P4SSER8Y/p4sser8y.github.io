@@ -37,6 +37,9 @@
                 <q-badge v-if="sortedNotes && sortedNotes.length > 1">
                     {{ sortedNotes.length }}
                 </q-badge>
+                <q-badge :color="statusColor">
+                    {{ eposideInfo }}
+                </q-badge>
             </div>
             <div v-if="props.data.info.tags">
                 <q-chip
@@ -44,8 +47,9 @@
                     :key="index"
                     dense
                     outline
-                    >{{ tag }}</q-chip
                 >
+                    {{ tag }}
+                </q-chip>
             </div>
             <div>
                 <DatabaseLink
@@ -60,7 +64,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { TvNote, TvRecord } from './models';
+import { TvNote, TvRecord } from '../models/models';
 import dayjs, { Dayjs } from 'dayjs';
 import { useViewConfigStore } from 'src/stores/viewConfig';
 import { storeToRefs } from 'pinia';
@@ -88,6 +92,23 @@ const sortedNotes = computed(() => {
 });
 
 const latestNote = computed(() => sortedNotes?.value?.at(0));
+
+const eposideInfo = computed(
+    () =>
+        `${latestNote.value?.eposides.at(0)?.eposide ?? '?'} / ${
+            props.data.info.eposides ?? '?'
+        }`
+);
+
+const statusColor = computed(
+    () =>
+        new Map([
+            ['ing', 'green-10'],
+            ['suspended', 'yellow-10'],
+            ['abandoned', 'red-10'],
+            ['done', 'primary'],
+        ]).get(latestNote.value?.status ?? '') ?? 'primary'
+);
 
 function formatAssets(link: string): string {
     return `${viewConfig.user.value}/assets/${link}`;

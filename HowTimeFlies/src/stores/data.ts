@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { Record } from 'src/components/models';
+import { Record } from 'src/models/models';
 
 export const useDataStore = defineStore('data', {
     state: () => ({

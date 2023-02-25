@@ -52,7 +52,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { MovieRecord } from './models';
+import { MovieRecord } from '../models/models';
 import dayjs from 'dayjs';
 import { useViewConfigStore } from 'src/stores/viewConfig';
 import { storeToRefs } from 'pinia';

@@ -2,6 +2,8 @@ import dayjs, { Dayjs } from 'dayjs';
 
 export interface Record {
     type: string;
+    info: unknown;
+    notes?: unknown[];
 }
 
 export interface MovieRecord extends Record {
@@ -60,22 +62,41 @@ export interface TvInfo {
 
 export function sever_record(record: Record): Record[] {
     const ret: Record[] = [];
-    if (isMovieRecord(record)) {
-        for (const item of record.notes ?? []) {
-            ret.push({
-                type: 'movie',
-                info: record.info,
-                notes: [item],
-            } as Record);
+    for (const item of record.notes ?? []) {
+        const t = {...record};
+        t.notes = [item];
+        ret.push(t);
+    }
+    return ret;
+}
+
+export function classify_by_timestamp_format(
+    record: Record,
+    format: string
+): Record[] {
+    interface Eposide {
+        eposide: string;
+        timestamp: string;
+    }
+    const ret: Record[] = [];
+    if (isTvRecord(record)) {
+        for (const note of record.notes ?? []) {
+            const tmp = new Map<string, object[]>();
+            for (const eposide of note.eposides) {
+                const key = dayjs(eposide.timestamp).format(format);
+                const values = tmp.get(key) ?? [];
+                values.push(eposide);
+                tmp.set(key, values);
+            }
+            for (const eposides of tmp.values()) {
+                const t = {...record};
+                t.notes = [{ ...note }];
+                t.notes[0].eposides = eposides as Eposide[];
+                ret.push(t);
+            }
         }
-    } else if (isTvRecord(record)) {
-        for (const item of record.notes ?? []) {
-            ret.push({
-                type: 'tv',
-                info: record.info,
-                notes: [item],
-            } as Record);
-        }
+    } else {
+        ret.push(record);
     }
     return ret;
 }

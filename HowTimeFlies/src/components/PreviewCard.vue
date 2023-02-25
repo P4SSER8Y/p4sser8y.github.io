@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { isMovieRecord, isTvRecord, Record } from './models';
+import { isMovieRecord, isTvRecord, Record } from '../models/models';
 import MoviePreviewCard from './MoviePreviewCard.vue';
 import TvPreviewCard from './TvPreviewCard.vue';
 

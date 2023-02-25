@@ -39,6 +39,7 @@
                         :options="[
                             { label: 'Y', value: 'YYYY' },
                             { label: 'YM', value: 'YYYY-MM' },
+                            { label: 'YMD', value: 'YYYY-MM-DD ddd' },
                         ]"
                     >
                     </q-btn-toggle>

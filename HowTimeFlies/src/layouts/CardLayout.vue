@@ -24,7 +24,7 @@
 </style>
 
 <script setup lang="ts">
-import { Record, get_latest_timestamp } from 'src/components/models';
+import { Record, get_latest_timestamp } from 'src/models/models';
 import PreviewCard from 'src/components/PreviewCard.vue';
 import { computed, ref, onMounted, onUnmounted } from 'vue';
 
@@ -63,11 +63,11 @@ onUnmounted(() => {
 });
 
 function foobar() {
-    let clientWidth = main.value?.clientWidth ?? 0 * 0.95;
-    let cellWidth = props.maxElementWidth + 2 * props.gap;
+    let clientWidth = main.value?.clientWidth ?? 256;
+    let cellWidth = props.maxElementWidth + props.gap;
     if (clientWidth > 2 * cellWidth) {
         col.value = Math.round(clientWidth / cellWidth);
-        elementWidth.value = clientWidth / col.value;
+        elementWidth.value = clientWidth / col.value - props.gap;
     } else {
         col.value = 2;
         elementWidth.value = (clientWidth - col.value * props.gap * 2) / 2;
