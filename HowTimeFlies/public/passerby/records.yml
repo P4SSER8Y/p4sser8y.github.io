@@ -23,7 +23,7 @@ info:
   localTitle: 别当欧尼酱了！
   poster: p2884743880.webp
   links: ['db:35880801']
-  tags: ['喜剧', '百合']
+  tags: ['喜剧', '百合', '日常']
   year: 2023
   season: 1
   eposides: 12
@@ -31,6 +31,8 @@ notes:
   - status: ing
     rate: 4
     eposides:
+      - timestamp: 2023-02-25 14:00
+        eposide: 7
       - timestamp: 2023-02-19
         eposide: 6
       - timestamp: 2023-02-12
