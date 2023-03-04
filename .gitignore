@@ -1,6 +1,7 @@
 .vscode
 /data
 /dist
+.env
 
 # Local Netlify folder
 .netlify
