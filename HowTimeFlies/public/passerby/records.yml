@@ -61,6 +61,14 @@ notes:
   - status: ing
     rate: 5
     eposides:
+      - timestamp: 2023-03-04
+        eposide: 12
+      - timestamp: 2023-03-04
+        eposide: 11
+      - timestamp: 2023-03-04
+        eposide: 10
+      - timestamp: 2023-03-04
+        eposide: 9
       - timestamp: 2023-02-26
         eposide: 8
       - timestamp: 2023-02-19
