@@ -111,6 +111,6 @@ const statusColor = computed(
 );
 
 function formatAssets(link: string): string {
-    return `${process.env.DATA_BASE_URL}/${viewConfig.user.value}/assets/${link}`;
+    return `${process.env.HTF_DATA_BASE_URL}/${viewConfig.user.value}/assets/${link}`;
 }
 </script>

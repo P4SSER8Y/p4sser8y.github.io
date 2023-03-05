@@ -57,7 +57,7 @@ module.exports = configure(function (/* ctx */) {
 
             // rebuildCache: true, // rebuilds Vite/linter/etc cache on startup
 
-            publicPath: `/${process.env.PUBLIC_PATH}`,
+            publicPath: `/${process.env.HTF_PATH_PREFIX}`,
             // analyze: true,
             // env: {},
             // rawDefine: {}
@@ -74,7 +74,7 @@ module.exports = configure(function (/* ctx */) {
             // ]
 
             env: {
-                DATA_BASE_URL: `${process.env.DATA_BASE_URL}/${process.env.PUBLIC_PATH}`,
+                HTF_DATA_BASE_URL: `${process.env.HTF_DATA_BASE_URL}/${process.env.HTF_PATH_PREFIX}`,
             }
         },
 
