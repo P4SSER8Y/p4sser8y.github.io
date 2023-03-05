@@ -38,7 +38,7 @@ watch(viewConfig.user, throttle(update, 500, { trailing: true }));
 
 async function update() {
     try {
-        let raw = await api.get(`${viewConfig.user.value}/records.yml`);
+        let raw = await api.get(`${viewConfig.user.value}/`);
         data.data.value = raw
             ? parseAllDocuments(raw.data)
                   .map((x) => x.toJS())
