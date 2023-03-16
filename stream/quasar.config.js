@@ -57,14 +57,14 @@ module.exports = configure(function (/* ctx */) {
 
             // rebuildCache: true, // rebuilds Vite/linter/etc cache on startup
 
-            publicPath: `/${process.env.HTF_PATH_PREFIX}`,
+            publicPath: `/${process.env.STREAM_PATH_PREFIX}`,
             // analyze: true,
             // env: {},
             // rawDefine: {}
             // ignorePublicFolder: true,
             minify: true,
             // polyfillModulePreload: true,
-            distDir: '../dist/htf',
+            distDir: '../dist/stream',
 
             // extendViteConf (viteConf) {},
             // viteVuePluginOptions: {},
@@ -74,7 +74,7 @@ module.exports = configure(function (/* ctx */) {
             // ]
 
             env: {
-                HTF_DATA_BASE_URL: `${process.env.HTF_DATA_BASE_URL}/${process.env.HTF_PATH_PREFIX}`,
+                STREAM_DATA_BASE_URL: `${process.env.STREAM_DATA_BASE_URL}/${process.env.STREAM_PATH_PREFIX}`,
             }
         },
 
@@ -192,7 +192,7 @@ module.exports = configure(function (/* ctx */) {
             builder: {
                 // https://www.electron.build/configuration/configuration
 
-                appId: 'howtimeflies',
+                appId: 'stream',
             },
         },
 

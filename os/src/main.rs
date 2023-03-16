@@ -25,8 +25,8 @@ fn launcher() -> _ {
 
     use how_time_flies;
     let body = rocket::build();
-    let body = how_time_flies::build("/htf", body);
+    let body = how_time_flies::build("/stream", body);
     let body = body.register("/", rocket::catchers![any_error]);
-    let body = body.mount( "/", rocket::fs::FileServer::from(std::env::var("WAITER_STATIC_PATH").unwrap_or("static".to_string())));
+    let body = body.mount( "/", rocket::fs::FileServer::from(std::env::var("OS_STATIC_PATH").unwrap_or("static".to_string())));
     body
 }

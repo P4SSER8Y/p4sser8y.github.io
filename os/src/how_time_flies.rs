@@ -29,15 +29,15 @@ struct Ack<T> {
 }
 
 static DATA_PATH_BASE: Lazy<PathBuf> = Lazy::new(|| {
-    let data_path_base = std::env::var("WAITER_DATA_PATH_BASE").unwrap_or(r"data".to_string());
-    info!("WAITER_DATA_PATH_BASE={}", data_path_base);
-    Path::new(&data_path_base).join("htf")
+    let data_path_base = std::env::var("OS_DATA_PATH_BASE").unwrap_or(r"data".to_string());
+    info!("OS_DATA_PATH_BASE={}", data_path_base);
+    Path::new(&data_path_base).join("stream")
 });
 
 fn cors_config(response: &mut Response, request: &Request) {
     static RE_HOST: Lazy<Regex> = Lazy::new(|| {
-        let pattern = std::env::var("WAITER_CORS_DOMAIN_PATTERN").unwrap_or(r".*".to_string());
-        info!("WAITER_CORS_DOMAIN_PATTERN={}", pattern);
+        let pattern = std::env::var("OS_CORS_DOMAIN_PATTERN").unwrap_or(r".*".to_string());
+        info!("OS_CORS_DOMAIN_PATTERN={}", pattern);
         RegexBuilder::new(pattern.as_str())
             .case_insensitive(true)
             .multi_line(false)

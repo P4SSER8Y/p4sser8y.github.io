@@ -83,6 +83,6 @@ const latestNote = computed(() =>
 );
 
 function formatAssets(link: string): string {
-    return `${process.env.HTF_DATA_BASE_URL}/${viewConfig.user.value}/assets/${link}`;
+    return `${process.env.STREAM_DATA_BASE_URL}/${viewConfig.user.value}/assets/${link}`;
 }
 </script>

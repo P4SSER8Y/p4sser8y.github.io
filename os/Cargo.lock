@@ -743,6 +743,21 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "624a8340c38c1b80fd549087862da4ba43e08858af025b236e509b6649fc13d5"
 
 [[package]]
+name = "os"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "dotenv",
+ "log",
+ "once_cell",
+ "redis",
+ "regex",
+ "rocket",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
 name = "overload"
 version = "0.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1495,21 +1510,6 @@ name = "version_check"
 version = "0.9.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "49874b5167b65d7193b8aba1567f5c7d93d001cafc34600cee003eda787e483f"
-
-[[package]]
-name = "waiter"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "dotenv",
- "log",
- "once_cell",
- "redis",
- "regex",
- "rocket",
- "serde",
- "serde_json",
-]
 
 [[package]]
 name = "want"
