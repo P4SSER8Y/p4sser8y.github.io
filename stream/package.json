@@ -1,8 +1,8 @@
 {
-  "name": "howtimeflies",
+  "name": "stream",
   "version": "0.0.1",
   "description": "A Quasar Project",
-  "productName": "How Time Flies",
+  "productName": "stream",
   "author": "P4SSER8Y <P4SSER8Y@outlook.com>",
   "private": true,
   "scripts": {
