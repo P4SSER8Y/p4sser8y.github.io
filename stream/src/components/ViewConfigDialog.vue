@@ -43,6 +43,9 @@
                         ]"
                     >
                     </q-btn-toggle>
+
+                    <span class="text"> Home </span>
+                    <q-btn href="/" no-caps> Go </q-btn>
                 </div>
             </q-card-section>
             <q-separator />
