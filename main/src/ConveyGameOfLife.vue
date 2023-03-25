@@ -1,5 +1,5 @@
 <template>
-  <div class="main">
+  <div class="main tooltip tooltip-info" :data-tip="alive_count">
     <span v-for="i in count" :class="(state[i] == 1 ? 'block-on' : 'block-off') + ' block'"></span>
   </div>
 </template>
@@ -8,6 +8,7 @@
 import { ref, computed, reactive, onMounted, onUnmounted } from 'vue';
 const props = defineProps<{ width: number; height: number }>();
 const count = ref(0);
+const alive_count = ref(0);
 let timer: number = undefined;
 let a: Array<number> = undefined;
 let b: Array<number> = undefined;
@@ -64,6 +65,7 @@ function step() {
   let t = a;
   a = b;
   b = t;
+  let alive = 0;
   for (let x = 0; x < props.width; x++) {
     for (let y = 0; y < props.height; y++) {
       let idx = index(x, y);
@@ -75,8 +77,10 @@ function step() {
         b[idx] = n == 2 || n == 3 ? 1 : 0;
       }
       state[idx] = b[idx];
+      alive += b[idx];
     }
   }
+  alive_count.value = alive;
 }
 </script>
 
