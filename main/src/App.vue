@@ -9,7 +9,7 @@ import ConveyGameOfLife from './ConveyGameOfLife.vue';
     <div class="flex flex-col justify-center gap-4">
       <ConveyGameOfLife :width="28" :height="21" class="place-self-end self-center"></ConveyGameOfLife>
       <span class="flex flex-row place-self-center self-center">
-        <button class="btn w-full btn-xs btn-outline btn-ghost" onclick="window.location.href='/stream'">stream</button>
+        <button onclick="window.location.href='/stream'">stream</button>
       </span>
     </div>
   </div>
@@ -27,6 +27,6 @@ import ConveyGameOfLife from './ConveyGameOfLife.vue';
 }
 
 button {
-  @apply backdrop-blur-xl;
+  @apply btn w-full btn-xs btn-ghost backdrop-blur-xl;
 }
 </style>
