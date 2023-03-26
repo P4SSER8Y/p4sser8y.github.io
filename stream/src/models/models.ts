@@ -43,7 +43,7 @@ export interface TvNote {
 export interface MovieInfo {
     title: string;
     localTitle?: string;
-    poster?: string;
+    poster?: string[];
     thumbnail?: string;
     links?: string[];
     tags?: string[];
@@ -52,7 +52,7 @@ export interface MovieInfo {
 export interface TvInfo {
     title: string;
     localTitle?: string;
-    poster?: string;
+    poster?: string[];
     thumbnail?: string;
     links?: string[];
     tags?: string[];
