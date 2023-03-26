@@ -97,10 +97,10 @@ function step() {
 }
 
 .block-on {
-  @apply bg-secondary;
+  @apply bg-secondary opacity-50;
 }
 
 .block-off {
-  @apply bg-neutral;
+  @apply bg-neutral blur-sm opacity-25;
 }
 </style>
