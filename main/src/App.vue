@@ -25,16 +25,6 @@ import ConveyGameOfLife from './ConveyGameOfLife.vue';
   }
 }
 
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 .gradient {
   @apply place-self-center self-center;
   overflow: hidden;
@@ -43,7 +33,6 @@ import ConveyGameOfLife from './ConveyGameOfLife.vue';
   height: var(--size);
   filter: blur(calc(var(--size) / 5));
   background-image: linear-gradient(rgba(55, 235, 169, 0.85), #5b37eb);
-  animation: rotate 60s linear infinite;
   border-radius: 30% 70% 70% 30%/30% 30% 70% 70%;
 }
 
@@ -53,7 +42,6 @@ import ConveyGameOfLife from './ConveyGameOfLife.vue';
   }
 }
 
-/* This is just to transition when you change the viewport size. */
 * {
   transition: all 0.25s ease-out;
 }

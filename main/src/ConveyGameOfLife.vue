@@ -101,6 +101,6 @@ function step() {
 }
 
 .block-off {
-  @apply opacity-0;
+  @apply invisible;
 }
 </style>
