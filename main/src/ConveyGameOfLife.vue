@@ -92,15 +92,15 @@ function step() {
 }
 
 .block {
-  @apply transition duration-150 align-middle inline-block w-2 h-2 md:w-4 md:h-4;
+  @apply align-middle inline-block mask mask-squircle w-2 h-2 md:w-4 md:h-4;
   aspect-ratio: 1;
 }
 
 .block-on {
-  @apply bg-secondary opacity-50;
+  @apply bg-secondary drop-shadow-2xl;
 }
 
 .block-off {
-  @apply bg-neutral blur-sm opacity-25;
+  @apply opacity-0;
 }
 </style>

@@ -43,7 +43,7 @@ import ConveyGameOfLife from './ConveyGameOfLife.vue';
   height: var(--size);
   filter: blur(calc(var(--size) / 5));
   background-image: linear-gradient(rgba(55, 235, 169, 0.85), #5b37eb);
-  animation: rotate 5s linear infinite;
+  animation: rotate 60s linear infinite;
   border-radius: 30% 70% 70% 30%/30% 30% 70% 70%;
 }
 
