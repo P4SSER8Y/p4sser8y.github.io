@@ -97,7 +97,7 @@ function step() {
 }
 
 .block-on {
-  @apply bg-secondary drop-shadow-2xl;
+  @apply bg-secondary;
 }
 
 .block-off {

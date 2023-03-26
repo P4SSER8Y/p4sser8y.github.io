@@ -5,9 +5,6 @@ import ConveyGameOfLife from './ConveyGameOfLife.vue';
 
 <template>
   <!-- <MorseCodeTitle title="hello world"></MorseCodeTitle> -->
-  <div class="grid grid-cols-1 grid-rows-1 h-screen w-screen" style="position: absolute;">
-    <div class="gradient"></div>
-  </div>
   <div class="grid grid-cols-1 grid-rows-1 h-screen w-screen">
     <div class="flex flex-col justify-center gap-4">
       <ConveyGameOfLife :width="28" :height="21" class="place-self-end self-center"></ConveyGameOfLife>
@@ -22,23 +19,6 @@ import ConveyGameOfLife from './ConveyGameOfLife.vue';
 @supports (-webkit-touch-callout: none) {
   .h-screen {
     height: -webkit-fill-available;
-  }
-}
-
-.gradient {
-  @apply place-self-center self-center;
-  overflow: hidden;
-  --size: 250px;
-  width: var(--size);
-  height: var(--size);
-  filter: blur(calc(var(--size) / 5));
-  background-image: linear-gradient(rgba(55, 235, 169, 0.85), #5b37eb);
-  border-radius: 30% 70% 70% 30%/30% 30% 70% 70%;
-}
-
-@media (min-width: 720px) {
-  .gradient {
-    --size: 500px;
   }
 }
 
