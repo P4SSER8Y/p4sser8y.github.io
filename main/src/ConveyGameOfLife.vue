@@ -1,5 +1,5 @@
 <template>
-  <div class="main tooltip tooltip-info" :data-tip="alive_count">
+  <div class="main tooltip" :data-tip="alive_count">
     <span v-for="i in count" :class="(state[i] == 1 ? 'block-on' : 'block-off') + ' block'"></span>
   </div>
 </template>
