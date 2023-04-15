@@ -46,6 +46,7 @@ export interface MovieInfo {
     poster?: string[];
     thumbnail?: string;
     links?: string[];
+    series?: string;
     tags?: string[];
 }
 
@@ -56,6 +57,7 @@ export interface TvInfo {
     thumbnail?: string;
     links?: string[];
     tags?: string[];
+    series?: string;
     season?: number;
     eposides?: number;
 }
