@@ -1,6 +1,6 @@
 <template>
     <div :style="'width:' + props.width + 'px'">
-        <component :is="card" :data="props.data"></component>
+        <component :is="card" :data="props.data" style="height:100%"></component>
     </div>
 </template>
 
