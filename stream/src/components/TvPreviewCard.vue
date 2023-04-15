@@ -27,9 +27,6 @@
                     {{ tag }}
                 </q-chip>
             </div>
-            <div>
-                <DatabaseLink v-for="(item, index) in props.data.info.links" :link="item" :key="index"></DatabaseLink>
-            </div>
         </q-card-section>
     </q-card>
 </template>

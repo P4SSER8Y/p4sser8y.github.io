@@ -19,9 +19,6 @@
             <div v-if="props.data.info.tags">
                 <q-chip v-for="(tag, index) in props.data.info.tags" :key="index" dense outline>{{ tag }}</q-chip>
             </div>
-            <div>
-                <DatabaseLink v-for="(item, index) in props.data.info.links" :link="item" :key="index"></DatabaseLink>
-            </div>
         </q-card-section>
     </q-card>
 </template>
