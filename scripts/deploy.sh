@@ -16,5 +16,6 @@ cp -r $root/main/dist/* $outdir/
 
 cd $root/stream
 quasar build
+yarn data
 mkdir -p $outdir/stream
 cp -r $root/stream/dist/* $outdir/stream

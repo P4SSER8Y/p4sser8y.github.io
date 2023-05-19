@@ -39,7 +39,7 @@ import { TvNote, TvRecord } from '../models/models';
 import dayjs, { Dayjs } from 'dayjs';
 import { useViewConfigStore } from 'src/stores/viewConfig';
 import { storeToRefs } from 'pinia';
-import DatabaseLink from './DatabaseLink.vue';
+// import DatabaseLink from './DatabaseLink.vue';
 
 const viewConfig = storeToRefs(useViewConfigStore());
 const props = defineProps<{
@@ -98,7 +98,7 @@ function formatAssets(link: string | undefined): string | null {
     if (link.startsWith('http://') || link.startsWith('https://')) {
         return link;
     } else {
-        return `${process.env.STREAM_DATA_BASE_URL}/${viewConfig.user.value}/assets/${link}`;
+        return `${process.env.STREAM_DATA_BASE_URL}/assets/${link}`;
     }
 }
 

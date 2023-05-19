@@ -34,11 +34,7 @@ onMounted(async () => {
 
 useMeta(() => {
     return {
-        title:
-            'How Time Flies' +
-            (viewConfig.user.value && viewConfig.user.value.length > 0
-                ? ' - ' + viewConfig.user.value
-                : ''),
+        title: 'How Time Flies'
     };
 });
 </script>

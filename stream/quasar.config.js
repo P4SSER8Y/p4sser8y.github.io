@@ -74,8 +74,8 @@ module.exports = configure(function (/* ctx */) {
             // ]
 
             env: {
-                STREAM_DATA_BASE_URL: `${process.env.STREAM_DATA_BASE_URL}/${process.env.STREAM_PATH_PREFIX}`,
-            }
+                STREAM_DATA_BASE_URL: `data`,
+            },
         },
 
         // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#devServer
@@ -83,9 +83,12 @@ module.exports = configure(function (/* ctx */) {
             // https: true
             open: false, // opens browser window automatically
             proxy: {
-                '^/(api|assets)': {
-                    target: 'http://localhost:5000/',
+                '^/data': {
+                    target: '',
                     changeOrigin: true,
+                    pathRewrite: {
+                        '^/data': '/dist/data',
+                    },
                 },
             },
         },

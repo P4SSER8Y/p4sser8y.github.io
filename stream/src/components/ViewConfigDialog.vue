@@ -2,15 +2,11 @@
     <q-dialog ref="dialogRef" @hide="onDialogHide">
         <q-card class="q-dialog-plugin">
             <q-card-section>
-                <q-btn-toggle
-                    v-bind:model-value="viewConfig.lastPage.value"
-                    spread
-                    @update:model-value="switchPage"
+                <q-btn-toggle v-bind:model-value="viewConfig.lastPage.value" spread @update:model-value="switchPage"
                     :options="[
                         { icon: 'timeline', value: 'timeline' },
                         { icon: 'view_comfy', value: 'posterWall' },
-                    ]"
-                ></q-btn-toggle>
+                    ]"></q-btn-toggle>
             </q-card-section>
             <q-separator />
             <q-card-section>
@@ -18,9 +14,6 @@
             </q-card-section>
             <q-card-section>
                 <div class="main text-h6">
-                    <span>User</span>
-                    <q-input v-model="viewConfig.user.value" dense> </q-input>
-
                     <span> Information </span>
                     <q-toggle v-model="viewConfig.detailedInfo.value">
                     </q-toggle>
@@ -29,19 +22,12 @@
                     <q-toggle v-model="viewConfig.merged.value"> </q-toggle>
 
                     <span class="text">Timeline Format</span>
-                    <q-btn-toggle
-                        v-model="viewConfig.classifyFormat.value"
-                        toggle-color="primary"
-                        text-color="primary"
-                        push
-                        no-caps
-                        rounded
-                        :options="[
+                    <q-btn-toggle v-model="viewConfig.classifyFormat.value" toggle-color="primary" text-color="primary" push
+                        no-caps rounded :options="[
                             { label: 'Y', value: 'YYYY' },
                             { label: 'YM', value: 'YYYY-MM' },
                             { label: 'YMD', value: 'YYYY-MM-DD ddd' },
-                        ]"
-                    >
+                        ]">
                     </q-btn-toggle>
 
                     <span class="text"> Home </span>
@@ -54,14 +40,10 @@
             </q-card-section>
             <q-card-section>
                 Powered by
-                <a href="https://quasar.dev/"
-                    ><q-chip outline color="secondary">
-                        <q-avatar
-                            icon="img:https://cdn.quasar.dev/logo-v2/svg/logo.svg"
-                        />
+                <a href="https://quasar.dev/"><q-chip outline color="secondary">
+                        <q-avatar icon="img:https://cdn.quasar.dev/logo-v2/svg/logo.svg" />
                         Quasar
-                    </q-chip></a
-                >
+                    </q-chip></a>
             </q-card-section>
         </q-card>
     </q-dialog>

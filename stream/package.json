@@ -8,10 +8,12 @@
   "scripts": {
     "lint": "eslint --ext .js,.ts,.vue ./",
     "format": "prettier --write \"**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",
-    "test": "echo \"No test specified\" && exit 0"
+    "test": "echo \"No test specified\" && exit 0",
+    "data": "node ./scripts/update.mjs"
   },
   "dependencies": {
     "@quasar/extras": "^1.16.2",
+    "@types/fs-extra": "^11.0.1",
     "@types/lodash-es": "^4.17.6",
     "axios": "^0.21.1",
     "dayjs": "^1.11.7",
