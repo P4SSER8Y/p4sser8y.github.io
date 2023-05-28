@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import MorseCodeTitle from './MorseCodeTitle.vue';
 import ConveyGameOfLife from './ConveyGameOfLife.vue';
+const links: string[] = ["stream", "admin"];
+
+function makeLocalLink(link: string): string {
+  return `window.location.href='/${link}'`;
+}
 </script>
 
 <template>
@@ -9,7 +14,7 @@ import ConveyGameOfLife from './ConveyGameOfLife.vue';
     <div class="flex flex-col justify-center gap-4">
       <ConveyGameOfLife :width="28" :height="21" class="place-self-end self-center"></ConveyGameOfLife>
       <span class="flex flex-row place-self-center self-center">
-        <button onclick="window.location.href='/stream'">stream</button>
+        <button v-for="link in links" :onclick="makeLocalLink(link)">{{ link }}</button>
       </span>
     </div>
   </div>

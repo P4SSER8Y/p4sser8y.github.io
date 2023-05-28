@@ -27,3 +27,6 @@ yarn quasar build
 yarn data
 mkdir -p $outdir/stream
 cp -r $root/stream/dist/* $outdir/stream
+
+mkdir -p $outdir/admin
+cp -r $root/netlify-cms/* $outdir/admin
