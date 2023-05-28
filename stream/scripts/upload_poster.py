@@ -53,7 +53,7 @@ def uploader_format_thumbnail(ctx) -> str:
     return str(dst.name)
 
 
-UPLOADERS = [uploader_format_thumbnail, uploader_format_src]
+UPLOADERS = [uploader_format_thumbnail]
 
 
 def generate_thumbnail(src: np.ndarray):
@@ -72,9 +72,9 @@ def generate_thumbnail(src: np.ndarray):
         tw = round(w * factor)
         logging.info(f"resize {w}x{h} to {tw}x{th}")
         dst = cv.resize(src, (tw, th), interpolation=cv.INTER_AREA)
-    _, f = tempfile.mkstemp(suffix='.png')
+    _, f = tempfile.mkstemp(suffix='.webp')
     with open(f, 'wb') as fp:
-        _, raw = cv.imencode('.png', dst)
+        _, raw = cv.imencode('.webp', dst, [cv.IMWRITE_WEBP_QUALITY, 75])
         fp.write(raw)
     return f
 
