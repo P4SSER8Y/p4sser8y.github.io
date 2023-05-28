@@ -1,0 +1,18 @@
+backend:
+  name: git-gateway
+  branch: ocean
+publish_mode: editorial_workflow
+media_folder: data
+collections:
+  - name: stream
+    label: stream
+    folder: data/stream
+    create: true
+    slug: "{{slug}}"
+    format: yml
+    fields:
+      - {label: 'title', name: 'info.title', required: true}
+      - {label: 'local title', name: 'info.localTitle', required: false}
+slug:
+  encoding: unicode
+  clean_accents: true
