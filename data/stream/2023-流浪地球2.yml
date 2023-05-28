@@ -1,0 +1,19 @@
+info:
+  links:
+    - db:35267208
+  poster:
+    - 20230527-211506-thumbnail.webp
+  series: 流浪地球
+  tags:
+    - 科幻
+    - 灾难
+  title: 流浪地球2
+  year: 2023
+notes:
+  - rate: 5
+    timestamp: 2023-01-22
+    where: cinema
+  - rate: 5
+    timestamp: 2023-02-04
+    where: cinema
+type: movie

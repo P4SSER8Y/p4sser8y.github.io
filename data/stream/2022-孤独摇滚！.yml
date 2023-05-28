@@ -1,0 +1,53 @@
+info:
+  eposides: 12
+  links:
+    - db:35366293
+    - moe:孤独摇滚！
+  localTitle: 孤独摇滚！
+  poster:
+    - 20230413-015933-thumbnail.webp
+  season: 1
+  tags:
+    - 剧情
+    - 日本
+    - 喜剧
+  title: ぼっち・ざ・ろっく！
+  year: 2022
+notes:
+  - eposides:
+      - eposide: 3
+        timestamp: 2023-04-16 13:05
+      - eposide: 2
+        timestamp: 2023-04-16 12:30
+      - eposide: 1
+        timestamp: 2023-04-16 00:05
+    rate: 5
+    status: ing
+  - eposides:
+      - eposide: 12
+        timestamp: 2023-04-14 01:50
+      - eposide: 11
+        timestamp: 2023-04-14 01:05
+      - eposide: 10
+        timestamp: 2023-04-14 00:25
+      - eposide: 9
+        timestamp: 2023-04-14 00:05
+      - eposide: 8
+        timestamp: 2023-04-13 23:30
+      - eposide: 7
+        timestamp: 2023-04-13 22:30
+      - eposide: 6
+        timestamp: 2023-04-13 13:35
+      - eposide: 5
+        timestamp: 2023-04-13 13:10
+      - eposide: 4
+        timestamp: 2023-04-13 01:55
+      - eposide: 3
+        timestamp: 2023-04-13 01:35
+      - eposide: 2
+        timestamp: 2023-04-13 01:10
+      - eposide: 1
+        timestamp: 2023-04-13 00:50
+    rate: 5
+    status: done
+type: tv

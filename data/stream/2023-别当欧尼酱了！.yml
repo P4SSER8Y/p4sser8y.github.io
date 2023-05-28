@@ -1,0 +1,44 @@
+info:
+  eposides: 12
+  links:
+    - db:35880801
+  localTitle: 别当欧尼酱了！
+  poster:
+    - 20230527-211347-thumbnail.webp
+  season: 1
+  tags:
+    - 喜剧
+    - 百合
+    - 日常
+    - 日本
+  title: お兄ちゃんはおしまい！
+  year: 2023
+notes:
+  - eposides:
+      - eposide: 12
+        timestamp: 2023-04-08 13:39
+      - eposide: 11
+        timestamp: 2023-04-05
+      - eposide: 10
+        timestamp: 2023-03-18 14:00
+      - eposide: 9
+        timestamp: 2023-03-06 02:00
+      - eposide: 8
+        timestamp: 2023-03-05 20:30
+      - eposide: 7
+        timestamp: 2023-02-25 14:00
+      - eposide: 6
+        timestamp: 2023-02-19
+      - eposide: 5
+        timestamp: 2023-02-12
+      - eposide: 4
+        timestamp: 2023-02-05
+      - eposide: 3
+        timestamp: 2023-01-22
+      - eposide: 2
+        timestamp: 2023-01-15
+      - eposide: 1
+        timestamp: 2023-01-08
+    rate: 4
+    status: done
+type: tv

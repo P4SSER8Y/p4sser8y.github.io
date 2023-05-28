@@ -1,0 +1,30 @@
+
+type: tv
+info:
+  title: 鬼滅の刃 刀鍛冶の里編
+  localTitle: 鬼灭之刃 锻刀村篇
+  poster:
+    - 20230415-124643-thumbnail.webp
+  links: ["db:35769236", "moe:鬼灭之刃"]
+  tags: ["剧情", "日本"]
+  year: 2023
+  season: 3
+  series: 鬼滅の刃
+  eposides: 12
+notes:
+  - status: ing
+    eposides:
+      - timestamp: 2023-05-27 19:45
+        eposide: 7
+      - timestamp: 2023-05-17 17:27
+        eposide: 6
+      - timestamp: 2023-05-17 17:05
+        eposide: 5
+      - timestamp: 2023-05-06
+        eposide: 4
+      - timestamp: 2023-04-29 13:00
+        eposide: 3
+      - timestamp: 2023-04-22 13:00
+        eposide: 2
+      - timestamp: 2023-04-15 12:40
+        eposide: 1

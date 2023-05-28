@@ -1,0 +1,13 @@
+type: movie
+info:
+  title: ソードアート・オンライン プログレッシブ 冥き夕闇のスケルツォ
+  localTitle: 刀剑神域进击篇：暮色黄昏
+  poster:
+    - 20230528-143009-thumbnail.webp
+  links: ["db:35652451"]
+  tags: ["动画", "冒险", "动作"]
+  year: 2022
+notes:
+  - rate: 4
+    timestamp: 2023-05-28 14:15
+    where: local

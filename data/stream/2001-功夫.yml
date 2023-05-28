@@ -1,0 +1,20 @@
+info:
+  links:
+    - db:1291543
+    - imdb:tt0373074
+  poster:
+    - 20230410-004146-thumbnail.webp
+  tags:
+    - 动作
+    - 喜剧
+    - 玄幻
+  title: 功夫
+  year: 2001
+notes:
+  - rate: 5
+    timestamp: 2023-01-16
+    where: Bilibili
+  - rate: 5
+    timestamp: 2013-09-27
+    where: local
+type: movie
