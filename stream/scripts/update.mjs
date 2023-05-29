@@ -15,7 +15,7 @@ import { parseAllDocuments } from 'yaml';
 import fse from 'fs-extra';
 const { copySync, removeSync } = fse;
 
-let dst = join(dirname(fileURLToPath(import.meta.url)), '../dist/data');
+let dst = join(dirname(fileURLToPath(import.meta.url)), '../dist');
 let src = join(dirname(fileURLToPath(import.meta.url)), '../../data/stream');
 console.log(`copy "${src}" to "${dst}`);
 
@@ -61,7 +61,5 @@ for (let file of files) {
 }
 console.log(`found ${full.length} records`);
 
-removeSync(dst);
 mkdirSync(dst, { recursive: true, mode: 0o777 });
 writeFileSync(join(dst, 'records.json'), JSON.stringify(full), 'utf8');
-copySync(join(src, 'assets'), join(dst, 'assets'));

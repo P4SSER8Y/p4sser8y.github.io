@@ -2,7 +2,7 @@ backend:
   name: git-gateway
   branch: ocean
 publish_mode: editorial_workflow
-media_folder: data/stream/assets
+media_folder: data/media
 collections:
   - name: stream
     label: stream

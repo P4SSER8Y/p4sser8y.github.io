@@ -98,7 +98,7 @@ function formatAssets(link: string | undefined): string | null {
     if (link.startsWith('http://') || link.startsWith('https://')) {
         return link;
     } else {
-        return `${process.env.STREAM_DATA_BASE_URL}/assets/${link}`;
+        return `${process.env.STREAM_MEDIA_BASE}/${link}`;
     }
 }
 
