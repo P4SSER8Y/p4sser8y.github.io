@@ -5,7 +5,7 @@ import ConveyGameOfLife from './ConveyGameOfLife.vue';
 const links: [string, string][] = [
   ["stream", "stream"],
   ["key", "pgp.asc"],
-  ["admin", "admin"],
+  // ["admin", "admin"],
 ];
 
 function makeLocalLink(link: string): string {
@@ -18,8 +18,8 @@ function makeLocalLink(link: string): string {
   <div class="grid grid-cols-1 grid-rows-1 h-screen w-screen">
     <div class="flex flex-col justify-center gap-4">
       <ConveyGameOfLife :width="28" :height="21" class="place-self-end self-center"></ConveyGameOfLife>
-      <span class="flex flex-row place-self-center self-center place-content-center">
-        <button v-for="link in links" :onclick="makeLocalLink(link[1])" class="place-self-center self-center">
+      <span class="flex flex-row place-self-center self-center place-content-center gap-2">
+        <button v-for="link in links" :onclick="makeLocalLink(link[1])" class="place-self-center self-center basis-1">
           {{ link[0] }}
         </button>
       </span>
