@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -e
+set -x
 node -v
 
 root=$(dirname $0)/..
@@ -23,6 +24,8 @@ if [ -n "${CI+1}" ]; then
     yarn global add @quasar/cli
     yarn
 fi
+echo "STREAM_MEDIA_BASE=${STREAM_MEDIA_BASE}"
+echo "STREAM_PATH_PREFIX=${STREAM_PATH_PREFIX}"
 yarn quasar build
 yarn data
 mkdir -p $outdir/stream

@@ -1,6 +1,7 @@
 # Blackbox
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/24ab316e-e4b2-4571-b324-46837fd5996a/deploy-status)](https://app.netlify.com/sites/neon-cannoli-52d418/deploys)
+![Netlify](https://api.netlify.com/api/v1/badges/24ab316e-e4b2-4571-b324-46837fd5996a/deploy-status)
+![Github Pages](https://github.com/P4SSER8Y/p4sser8y.github.io/actions/workflows/page.yml/badge.svg?branch=ocean)
 
 ## Setup
 

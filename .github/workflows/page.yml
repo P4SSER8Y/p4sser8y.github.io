@@ -1,0 +1,30 @@
+name: Github Pages
+
+on:
+  push:
+    branches:
+      - ocean
+
+env:
+  STREAM_MEDIA_BASE: ${{ vars.STREAM_MEDIA_BASE }}
+  STREAM_PATH_PREFIX: ${{ vars.STREAM_PATH_PREFIX }}
+
+jobs:
+  build:
+    name: space
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+      - name: Install Yarn
+        run: npm install -g yarn
+      - name: Build
+        run: ./scripts/deploy.sh
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: ./dist
+          single-commit: true
