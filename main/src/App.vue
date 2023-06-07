@@ -3,7 +3,7 @@ import MorseCodeTitle from './MorseCodeTitle.vue';
 import ConveyGameOfLife from './ConveyGameOfLife.vue';
 
 const links: [string, string][] = [
-  ["stream", "stream"],
+  ["stream", "stream/"],
   ["key", "pgp.asc"],
   // ["admin", "admin"],
 ];
