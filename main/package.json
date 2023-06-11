@@ -1,6 +1,8 @@
 {
-  "name": "main",
+  "name": "z-main",
   "version": "0.0.0",
+  "license": "WTFPL",
+  "private": true,
   "scripts": {
     "dev": "vite",
     "build": "vite build",

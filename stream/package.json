@@ -1,8 +1,9 @@
 {
-  "name": "stream",
+  "name": "z-stream",
   "version": "0.0.1",
-  "description": "A Quasar Project",
-  "productName": "stream",
+  "license": "WTFPL",
+  "description": "z-stream",
+  "productName": "z-stream",
   "author": "P4SSER8Y <P4SSER8Y@outlook.com>",
   "private": true,
   "scripts": {
