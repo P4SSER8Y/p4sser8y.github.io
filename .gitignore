@@ -2,6 +2,7 @@
 /dist
 .env
 .envrc
+/data
 
 # Local Netlify folder
 .netlify
