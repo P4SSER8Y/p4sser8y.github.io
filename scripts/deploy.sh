@@ -13,6 +13,8 @@ rm -rf $outdir
 echo root=$root
 echo output_directory=$outdir
 
+export INFO_NOW=$(date -u '+%s')
+
 echo "================ data ================"
 export DATA_DIR=$(mktemp -d)
 echo data_directory=$DATA_DIR

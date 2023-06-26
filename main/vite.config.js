@@ -8,4 +8,5 @@ export default defineConfig({
     emptyOutDir: true,
     copyPublicDir: true,
   },
+  envPrefix: ['INFO_'],
 });

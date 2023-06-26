@@ -2,6 +2,8 @@
 import MorseCodeTitle from './MorseCodeTitle.vue';
 import ConveyGameOfLife from './ConveyGameOfLife.vue';
 
+const now = new Date(parseInt(import.meta.env.INFO_NOW) * 1000).toLocaleString();
+
 const links: [string, string][] = [
   ["stream", "stream/"],
   ["key", "pgp.asc"],
@@ -15,6 +17,9 @@ function makeLocalLink(link: string): string {
 
 <template>
   <!-- <MorseCodeTitle title="hello world"></MorseCodeTitle> -->
+  <div class="text-xs fixed z-100 bottom-0 right-0">
+    Build: {{ now }}
+  </div>
   <div class="grid grid-cols-1 grid-rows-1 h-screen w-screen">
     <div class="flex flex-col justify-center gap-4">
       <ConveyGameOfLife :width="28" :height="21" class="place-self-end self-center"></ConveyGameOfLife>
