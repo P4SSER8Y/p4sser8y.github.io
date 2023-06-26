@@ -13,6 +13,11 @@ rm -rf $outdir
 echo root=$root
 echo output_directory=$outdir
 
+echo "================ data ================"
+export DATA_DIR=$(mktemp -d)
+echo data_directory=$DATA_DIR
+git clone $DATA_REPO $DATA_DIR --depth 1
+
 echo "================ main ================"
 cd $root/main
 if [ -n "${CI}" ]; then
@@ -43,7 +48,9 @@ fi
 
 echo "================ media ================"
 mkdir -p $outdir/media
-cp -r $root/data/media/* $outdir/media
+cp -r $DATA_DIR/media/* $outdir/media
 
 echo "================ statics ================"
-cp -r $root/data/statics/* $outdir/
+cp -r $DATA_DIR/statics/* $outdir/
+
+rm -rf $DATA_DIR

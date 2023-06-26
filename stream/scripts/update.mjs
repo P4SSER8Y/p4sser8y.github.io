@@ -16,7 +16,7 @@ import fse from 'fs-extra';
 const { copySync, removeSync } = fse;
 
 let dst = join(dirname(fileURLToPath(import.meta.url)), '../dist');
-let src = join(dirname(fileURLToPath(import.meta.url)), '../../data/stream');
+let src = join(process.env.DATA_DIR, 'stream');
 console.log(`copy "${src}" to "${dst}`);
 
 let full = [];
