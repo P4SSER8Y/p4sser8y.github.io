@@ -17,9 +17,8 @@ function makeLocalLink(link: string): string {
 
 <template>
   <!-- <MorseCodeTitle title="hello world"></MorseCodeTitle> -->
-  <div class="text-xs fixed z-100 bottom-0 right-0 group transition duration-200 text-slate-700 hover:text-slate-50 active:text-slate-50 focus:text-slate-50">
-    <span> ◪ </span>
-    <span class="hidden group-hover:contents group-focus:contents group-active:contents"> Build: {{ now }} </span>
+  <div class="text-xs fixed z-100 bottom-5 left-1/2 -translate-x-1/2 transition text-gray-700 duration-200 hover:text-inherit focus:text-inherit active:text-inherit">
+    <span> Build: {{ now }} </span>
   </div>
   <div class="grid grid-cols-1 grid-rows-1 h-screen w-screen">
     <div class="flex flex-col justify-center gap-4">
