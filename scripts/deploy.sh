@@ -18,7 +18,7 @@ export INFO_NOW=$(date -u '+%s')
 echo "================ data ================"
 export DATA_DIR=$(mktemp -d)
 echo data_directory=$DATA_DIR
-git clone $DATA_REPO $DATA_DIR --depth 1
+git clone $DATA_REPO $DATA_DIR --depth 1 --branch $DATA_REPO_BRANCH
 
 echo "================ main ================"
 cd $root/main
