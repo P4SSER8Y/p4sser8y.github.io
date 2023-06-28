@@ -42,12 +42,6 @@ yarn data
 mkdir -p $outdir/stream
 cp -r $root/stream/dist/* $outdir/stream
 
-if [ -n "${NETLIFY}" ]; then
-    echo "================ Netlify ================"
-    mkdir -p $outdir/admin
-    cp -r $root/netlify-cms/* $outdir/admin
-fi
-
 echo "================ media ================"
 mkdir -p $outdir/media
 cp -r $DATA_DIR/media/* $outdir/media
