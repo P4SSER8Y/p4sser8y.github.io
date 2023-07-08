@@ -15,14 +15,16 @@
 
 ### Environment Variables
 
-| Key                    | Default  | Description          |
-| ---------------------- | -------- | -------------------- |
-| STREAM_PATH_PREFIX     | `stream` | prefix of stream     |
-| STREAM_MEDIA_BASE      | `/media` | prefix of media      |
-|                        |          |                      |
-| OS_STATIC_PATH         | `./dist` |                      |
-| OS_CORS_DOMAIN_PATTERN | `.*`     |                      |
-| OS_DATA_PATH_BASE      | `./data` |                      |
-|                        |          |                      |
-| DATA_REPO              | ` `      | git URL of data repo |
-| DATA_REPO_BRANCH       | ` `      | branch of data repo  |
+| Key                    | Default  | Description                 |
+| ---------------------- | -------- | --------------------------- |
+| STREAM_PATH_PREFIX     | `stream` | prefix of stream            |
+| STREAM_MEDIA_BASE      | `/media` | prefix of media             |
+|                        |          |                             |
+| OS_STATIC_PATH         | `./dist` |                             |
+| OS_CORS_DOMAIN_PATTERN | `.*`     |                             |
+| OS_DATA_PATH_BASE      | `./data` |                             |
+|                        |          |                             |
+| DATA_REPO              | ` `      | git URL of data repo        |
+| DATA_REPO_BRANCH       | ` `      | branch of data repo         |
+|                        |          |                             |
+| INFO_NOW               | ` `      | UTC timestamp of build time |

@@ -76,6 +76,7 @@ module.exports = configure(function (/* ctx */) {
             env: {
                 STREAM_DATA_BASE_URL: `.`,
                 STREAM_MEDIA_BASE: process.env.STREAM_MEDIA_BASE,
+                INFO_NOW: process.env.INFO_NOW,
             },
         },
 

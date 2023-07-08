@@ -39,11 +39,15 @@
                 <div class="text-h5">About</div>
             </q-card-section>
             <q-card-section>
-                Powered by
-                <a href="https://quasar.dev/"><q-chip outline color="secondary">
-                        <q-avatar icon="img:https://cdn.quasar.dev/logo-v2/svg/logo.svg" />
+                <div>
+                    Powered by
+                    <a class="text-white" href="https://quasar.dev/">
                         Quasar
-                    </q-chip></a>
+                    </a>
+                </div>
+                <div v-if="now">
+                    Build at {{ now }}
+                </div>
             </q-card-section>
         </q-card>
     </q-dialog>
@@ -54,12 +58,15 @@ import { useDialogPluginComponent } from 'quasar';
 import { useViewConfigStore } from 'src/stores/viewConfig';
 import { storeToRefs } from 'pinia';
 import { useRouter } from 'vue-router';
+import process from 'process';
 
 const router = useRouter();
 
 const { dialogRef, onDialogHide } = useDialogPluginComponent();
 
 const viewConfig = storeToRefs(useViewConfigStore());
+
+const now = process.env.INFO_NOW ? ((new Date(parseInt(process.env.INFO_NOW) * 1000)).toLocaleString()) : null;
 
 function switchPage(page: string) {
     router.push(`/${page}`);
