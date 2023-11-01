@@ -59,7 +59,6 @@ module.exports = configure(function (/* ctx */) {
 
             publicPath: `/${process.env.STREAM_PATH_PREFIX}`,
             // analyze: true,
-            // env: {},
             // rawDefine: {}
             // ignorePublicFolder: true,
             minify: true,
@@ -74,7 +73,8 @@ module.exports = configure(function (/* ctx */) {
             // ]
 
             env: {
-                STREAM_DATA_BASE_URL: `.`,
+                NETLIFY: process.env.NETLIFY,
+                STREAM_DATA_BASE_URL: '.',
                 STREAM_MEDIA_BASE: process.env.STREAM_MEDIA_BASE,
                 INFO_NOW: process.env.INFO_NOW,
             },
