@@ -15,7 +15,7 @@ import { onMounted } from 'vue';
 import { useQuasar } from 'quasar';
 import { useDataStore } from './stores/data';
 import { storeToRefs } from 'pinia';
-import { api } from 'boot/axios';
+import { api, netlify } from 'boot/axios';
 import ViewConfigDialog from 'src/components/ViewConfigDialog.vue';
 
 const fireflyQuantity = 37;
@@ -31,8 +31,14 @@ onMounted(async () => {
 
 async function update() {
   try {
-    let raw = await api.get('records.json');
-    data.data.value = raw.data;
+    if (process.env.NETLIFY) {
+      let raw = await netlify.get('stream-query-all-records');
+      data.data.value = raw.data;
+    }
+    else {
+      let raw = await api.get('records.json');
+      data.data.value = raw.data;
+    }
   } catch (e) {
     data.data.value = [];
   }
