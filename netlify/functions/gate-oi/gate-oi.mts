@@ -1,7 +1,12 @@
 import { Context } from "@netlify/functions";
-import { utils, server } from "@passwordless-id/webauthn";
 import { kv } from "@vercel/kv";
 import { sql } from "@vercel/postgres";
+import {
+  generateRegistrationOptions,
+  verifyRegistrationResponse,
+} from "@simplewebauthn/server";
+
+const rpName = process.env.GATE_RP_NAME!;
 
 function notFound() {
   return new Response(null, { status: 404 });
@@ -13,24 +18,52 @@ async function start(user: string, req: Request, context: Context) {
     console.log(`invalid user=${user}`);
     return notFound();
   }
-  let challenge = utils.randomChallenge();
+  const options = await generateRegistrationOptions({
+    rpName: rpName,
+    rpID: new URL(context.site.url!).hostname,
+    userID: user,
+    userName: user,
+    authenticatorSelection: {
+      userVerification: "discouraged",
+    },
+  });
+
+  let challenge = options.challenge;
   let key = `gate/challenge/${user}`;
   console.log(`remember ${challenge}`);
   await kv.set(key, challenge);
   await kv.expire(key, 60);
-  return new Response(challenge);
+  return new Response(JSON.stringify(options));
 }
 
 async function verify(user: string, req: Request, context: Context) {
-  let expect = {
-    challenge: (await kv.get(`gate/challenge/${user}`)) as string,
-    origin: context.site.url!,
-  };
+  let challenge = (await kv.get(`gate/challenge/${user}`)) as string;
   await kv.del(`gate/challenge/${user}`);
-  let registration = await req.json();
-  let verify = await server.verifyRegistration(registration, expect);
-  await sql`INSERT INTO gate(name, id, publickey, algorithm, origin, enabled) VALUES(${registration.username}, ${verify.credential.id}, ${verify.credential.publicKey}, ${verify.credential.algorithm}, ${context.site.url}, TRUE)`;
-  return new Response(verify.credential.id);
+  
+  let response = await req.json();
+  console.log(challenge);
+
+  let verification = await verifyRegistrationResponse({
+    response: response,
+    expectedChallenge: challenge,
+    expectedOrigin: context.site.url!,
+    expectedRPID: new URL(context.site.url!).hostname,
+    requireUserVerification: false,
+  });
+  if (!verification.verified) {
+    return notFound();
+  }
+  
+  let credentialID = Buffer.from(verification.registrationInfo?.credentialID!).toString('base64url');
+  let publickey = Buffer.from(verification.registrationInfo?.credentialPublicKey!).toString('base64url');
+
+  await sql`INSERT INTO gate(username, id, publickey, origin, enabled)
+            VALUES(${user},
+                   ${credentialID},
+                   ${publickey},
+                   ${context.site.url},
+                   TRUE)`;
+  return new Response(JSON.stringify(verification.registrationInfo));
 }
 
 export default async (req: Request, context: Context) => {
