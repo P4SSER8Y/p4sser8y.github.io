@@ -2,11 +2,21 @@ import { Context } from "@netlify/functions";
 import { utils, server } from "@passwordless-id/webauthn";
 import { kv } from "@vercel/kv";
 import { sql } from "@vercel/postgres";
+import jwt from "jsonwebtoken";
 
-const expiredTime = 15 * 60;
+const expiredTime = parseInt(process.env.JWT_EXPIRED_TIME ?? "0");
 
 function notFound() {
   return new Response(null, { status: 404 });
+}
+
+function get_jwt(user: string) {
+  let token = jwt.sign(
+    { user: user, nonce: utils.randomChallenge() },
+    process.env.JWT_PRIVATE_KEY!,
+    { expiresIn: expiredTime }
+  );
+  return token;
 }
 
 async function start(user: string, req: Request, context: Context) {
@@ -61,16 +71,7 @@ async function verify(user: string, req: Request, context: Context) {
   };
 
   await server.verifyAuthentication(authentication, credentialKey, expected);
-  let token = utils.randomChallenge();
-  await kv.set(`gate/home/${user}/${token}`, 1);
-  await kv.expire(`gate/home/${user}/${token}`, expiredTime);
-  return new Response(
-    JSON.stringify({
-      user: user,
-      token: token,
-      ttl: expiredTime,
-    })
-  );
+  return new Response(get_jwt(user));
 }
 
 export default async (req: Request, context: Context) => {

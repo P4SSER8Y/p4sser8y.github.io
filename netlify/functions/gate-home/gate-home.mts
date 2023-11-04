@@ -1,35 +1,31 @@
 import { Context } from "@netlify/functions";
-import { kv } from "@vercel/kv";
+import jwt from "jsonwebtoken";
 
-function atHome(ttl: number) {
-  return new Response(`${ttl}`);
+function atHome() {
+  return new Response();
 }
 
 function outdoors() {
   return new Response(null, { status: 404 });
 }
 
+function verify(token: string) {
+  let payload = jwt.verify(token, process.env.JWT_PRIVATE_KEY!);
+  return payload;
+}
+
 export default async (req: Request, context: Context) => {
   try {
     if (req.method == "POST") {
-      let data = await req.json();
-      let key = `gate/home/${data.user}/${data.token}`;
-      let ttl = await kv.ttl(key);
-      if (ttl >= -1) {
-        return atHome(ttl);
-      }
+      let data = await req.blob();
+      let token = await data.text();
+      verify(token);
+      return atHome();
     } else if (req.method == "GET") {
       let params = new URL(req.url).searchParams;
-      console.log(params)
-      let user = params.get("user");
-      let token = params.get("token");
-      if (user && token) {
-        let key = `gate/home/${user}/${token}`;
-        let ttl = await kv.ttl(key);
-        if (ttl >= -1) {
-          return atHome(ttl);
-        }
-      }
+      let token = params.get("token") ?? "";
+      verify(token);
+      return atHome();
     }
     return outdoors();
   } catch (error) {
