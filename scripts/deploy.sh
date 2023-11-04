@@ -46,15 +46,19 @@ yarn data
 mkdir -p $outdir/stream
 cp -r $root/stream/dist/* $outdir/stream
 
+echo "================ gate ================"
+cd $root/gate
+if [ -n "${CI}" ]; then
+    yarn
+fi
+yarn build
+mkdir -p $outdir/gate
+cp -r $root/gate/dist/* $outdir/gate
+
+
 echo "================ media ================"
 mkdir -p $outdir/media
 cp -r $DATA_DIR/media/* $outdir/media
-
-echo "================ gate ================"
-cd $root/gate
-pnpm build
-mkdir -p $outdir/gate
-cp -r $root/gate/dist/* $outdir/gate
 
 echo "================ statics ================"
 cp -r $DATA_DIR/statics/* $outdir/
