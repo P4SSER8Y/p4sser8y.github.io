@@ -50,6 +50,12 @@ echo "================ media ================"
 mkdir -p $outdir/media
 cp -r $DATA_DIR/media/* $outdir/media
 
+echo "================ gate ================"
+cd $root/gate
+pnpm build
+mkdir -p $outdir/gate
+cp -r $root/gate/dist/* $outdir/gate
+
 echo "================ statics ================"
 cp -r $DATA_DIR/statics/* $outdir/
 
