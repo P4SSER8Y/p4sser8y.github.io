@@ -8,9 +8,8 @@ function notFound() {
 }
 
 async function start(user: string, req: Request, context: Context) {
-  console.log(`start for ${user}`);
-  let valid = await sql`SELECT * FROM owners WHERE name = ${user} LIMIT 1`;
-  if (valid.rowCount == 0) {
+  let valid = await kv.get(`gate/waiting/${user}`);
+  if (!valid) {
     console.log(`invalid user=${user}`);
     return notFound();
   }
