@@ -10,7 +10,7 @@ function outdoors() {
 }
 
 function verify(token: string) {
-  let payload = jwt.verify(token, process.env.JWT_PUBLIC_KEY!);
+  let payload = jwt.verify(token,Buffer.from(process.env.JWT_PUBLIC_KEY!, 'base64'));
   return payload;
 }
 

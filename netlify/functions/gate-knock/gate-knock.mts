@@ -17,7 +17,7 @@ function notFound() {
 function get_jwt(user: string) {
   let token = jwt.sign(
     { user: user, nonce: crypto.randomUUID() },
-    process.env.JWT_PRIVATE_KEY!,
+    Buffer.from(process.env.JWT_PRIVATE_KEY!, 'base64'),
     { expiresIn: expiredTime, algorithm: "ES256" }
   );
   return token;
