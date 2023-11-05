@@ -18,7 +18,7 @@ function get_jwt(user: string) {
   let token = jwt.sign(
     { user: user, nonce: crypto.randomUUID() },
     process.env.JWT_PRIVATE_KEY!,
-    { expiresIn: expiredTime }
+    { expiresIn: expiredTime, algorithm: "ES256" }
   );
   return token;
 }

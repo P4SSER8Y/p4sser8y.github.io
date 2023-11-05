@@ -30,6 +30,7 @@
 | INFO_NOW               | ` `      | UTC timestamp of build time   |
 |                        |          |                               |
 | JWT_PRIVATE_KEY        | ` `      | private key for JWT generator |
+| JWT_PUBLIC_KEY         | ` `      | public key for JWT generator  |
 | JWT_EXPIRED_TIME       | `0`      | default expired time for JWT  |
 |                        |          |                               |
 | GATE_RP_NAME           | ` `      | rpName of WebAuthn            |
