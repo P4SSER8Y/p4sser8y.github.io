@@ -27,7 +27,7 @@ fi
 echo "================ main ================"
 cd $root/main
 if [ -n "${CI}" ]; then
-    yarn
+    yarn install --no-lockfile
 fi
 yarn build
 mkdir -p $outdir/
@@ -37,7 +37,7 @@ echo "================ stream ================"
 cd $root/stream
 if [ -n "${CI}" ]; then
     yarn global add @quasar/cli
-    yarn
+    yarn install --no-lockfile
 fi
 echo "STREAM_MEDIA_BASE=${STREAM_MEDIA_BASE}"
 echo "STREAM_PATH_PREFIX=${STREAM_PATH_PREFIX}"
