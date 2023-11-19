@@ -86,21 +86,21 @@ function step() {
 
 <style scoped lang="postcss">
 .main {
-  @apply inline-grid gap-1 content-center;
+  @apply tw-inline-grid tw-gap-1 tw-content-center;
   grid-template-rows: repeat(v-bind('props.height'), minmax(1px, 1fr));
   grid-template-columns: repeat(v-bind('props.width'), minmax(1px, 1fr));
 }
 
 .block {
-  @apply align-middle inline-block mask mask-squircle w-2 h-2 md:w-4 md:h-4;
+  @apply tw-align-middle tw-inline-block tw-mask tw-mask-squircle tw-w-2 tw-h-2 md:tw-w-4 md:tw-h-4;
   aspect-ratio: 1;
 }
 
 .block-on {
-  @apply bg-secondary;
+  @apply tw-bg-secondary;
 }
 
 .block-off {
-  @apply invisible;
+  @apply tw-invisible;
 }
 </style>

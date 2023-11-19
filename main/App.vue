@@ -39,14 +39,14 @@ function decodePayload(token: string | null): object | null {
 <template>
   <!-- <MorseCodeTitle title="hello world"></MorseCodeTitle> -->
   <div
-    class="text-xs fixed z-100 bottom-5 left-1/2 -translate-x-1/2 transition text-gray-700 duration-200 hover:text-inherit focus:text-inherit active:text-inherit">
+    class="tw-text-xs tw-fixed tw-z-100 tw-bottom-5 tw-left-1/2 -tw-translate-x-1/2 tw-transition tw-text-gray-700 tw-duration-200 hover:tw-text-inherit focus:tw-text-inherit active:tw-text-inherit">
     <span> Build: {{ now }} </span>
   </div>
-  <div class="grid grid-cols-1 grid-rows-1 h-screen w-screen">
-    <div class="flex flex-col justify-center gap-4">
-      <ConveyGameOfLife :width="28" :height="21" class="place-self-end self-center"></ConveyGameOfLife>
-      <span class="flex flex-row place-self-center self-center place-content-center gap-2">
-        <button v-for="link in links" :onclick="makeLocalLink(link[1])" class="place-self-center self-center basis-1">
+  <div class="tw-grid tw-grid-cols-1 tw-grid-rows-1 tw-h-screen tw-w-screen">
+    <div class="tw-flex tw-flex-col tw-justify-center tw-gap-4">
+      <ConveyGameOfLife :width="28" :height="21" class="tw-place-self-end tw-self-center"></ConveyGameOfLife>
+      <span class="tw-flex tw-flex-row tw-place-self-center tw-self-center tw-place-content-center tw-gap-2">
+        <button v-for="link in links" :onclick="makeLocalLink(link[1])" class="tw-place-self-center tw-self-center tw-basis-1">
           {{ link[0] }}
         </button>
       </span>
@@ -66,6 +66,6 @@ function decodePayload(token: string | null): object | null {
 }
 
 button {
-  @apply btn w-full btn-xs btn-ghost backdrop-blur-xl;
+  @apply tw-btn tw-w-full tw-btn-xs tw-btn-ghost tw-backdrop-blur-xl;
 }
 </style>

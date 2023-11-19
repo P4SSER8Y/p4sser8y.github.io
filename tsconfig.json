@@ -1,0 +1,17 @@
+{
+  "include": [
+    "env.d.ts",
+    "main/**/*.{ts,vue}"
+  ],
+  "compilerOptions": {
+    "baseUrl": "/",
+    "paths": {
+      "@/*": [
+        "./main/*"
+      ]
+    },
+    "target": "ES2022",
+    "moduleResolution": "node",
+    "strict": true
+  }
+}

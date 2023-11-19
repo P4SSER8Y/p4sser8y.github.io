@@ -1,5 +1,6 @@
 module.exports = {
-  content: ['./src/**/*.{vue,js,ts}'],
+  prefix: 'tw-',
+  content: ['./main/**/*.{vue,js,ts}'],
   plugins: [require('daisyui')],
   daisyui: {
     themes: ['night'],

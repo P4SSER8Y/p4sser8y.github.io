@@ -8,5 +8,8 @@ export default defineConfig({
     emptyOutDir: true,
     copyPublicDir: true,
   },
+  server: {
+    host: true,
+  },
   envPrefix: ['INFO_', 'GATE_LOCATION'],
 });
