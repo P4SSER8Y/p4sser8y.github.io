@@ -10,7 +10,6 @@ if (searchParams.token) {
   token.value = searchParams.token as string;
 }
 
-console.log(process.env.GATE_LOCATION);
 let payload = decodePayload(token.value);
 let gate = new URL(process.env.GATE_LOCATION ?? '');
 gate.searchParams.set('callback', window.location.origin);
