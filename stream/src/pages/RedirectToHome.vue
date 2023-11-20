@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
 import { useRouter } from 'vue-router';
-import { useViewConfigStore } from 'src/stores/viewConfig';
+import { useViewConfigStore } from '../stores/viewConfig';
 import { storeToRefs } from 'pinia';
 
 const viewConfig = storeToRefs(useViewConfigStore());

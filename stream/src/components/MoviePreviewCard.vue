@@ -29,7 +29,7 @@
 import { computed, ref } from 'vue';
 import { MovieRecord } from '../models/models';
 import dayjs from 'dayjs';
-import { useViewConfigStore } from 'src/stores/viewConfig';
+import { useViewConfigStore } from '../stores/viewConfig';
 import { storeToRefs } from 'pinia';
 // import DatabaseLink from './DatabaseLink.vue';
 

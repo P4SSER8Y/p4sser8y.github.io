@@ -5,13 +5,13 @@
 
 <script setup lang="ts">
 import ErrorNotFound from './ErrorNotFound.vue';
-import CardLayout from 'src/layouts/CardLayout.vue';
+import CardLayout from '../layouts/CardLayout.vue';
 import { onMounted, computed } from 'vue';
-import { Record, sever_record } from 'src/models/models';
+import { Record, sever_record } from '../models/models';
 import { useMeta } from 'quasar';
-import { useViewConfigStore } from 'src/stores/viewConfig';
+import { useViewConfigStore } from '../stores/viewConfig';
 import { storeToRefs } from 'pinia';
-import { useDataStore } from 'src/stores/data';
+import { useDataStore } from '../stores/data';
 
 const data = storeToRefs(useDataStore());
 const viewConfig = storeToRefs(useViewConfigStore());

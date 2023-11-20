@@ -24,8 +24,8 @@
 </style>
 
 <script setup lang="ts">
-import { Record, get_latest_timestamp } from 'src/models/models';
-import PreviewCard from 'src/components/PreviewCard.vue';
+import { Record, get_latest_timestamp } from '../models/models';
+import PreviewCard from '../components/PreviewCard.vue';
 import { computed, ref, onMounted, onUnmounted } from 'vue';
 
 const props = withDefaults(

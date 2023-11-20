@@ -1,17 +1,21 @@
 {
   "include": [
     "env.d.ts",
-    "main/**/*.{ts,vue}"
+    "main/**/*.{ts,vue}",
+    "stream/**/*.{ts,vue}"
   ],
   "compilerOptions": {
     "baseUrl": "/",
     "paths": {
       "@/*": [
-        "./main/*"
+        "./main/*",
+        "./stream/*"
       ]
     },
     "target": "ES2022",
     "moduleResolution": "node",
-    "strict": true
+    "strict": true,
+    "isolatedModules": true,
+    "noEmit": true
   }
 }

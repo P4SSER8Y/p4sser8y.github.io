@@ -1,24 +1,24 @@
 <script setup lang="ts">
-import MorseCodeTitle from './MorseCodeTitle.vue';
 import ConveyGameOfLife from './ConveyGameOfLife.vue';
 import { useLocalStorage, useUrlSearchParams } from '@vueuse/core';
 import { Base64 } from 'js-base64'
 
-const now = new Date(parseInt(import.meta.env.INFO_NOW) * 1000).toLocaleString();
+const now = new Date(parseInt(process.env.INFO_NOW ?? '') * 1000).toLocaleString();
 const searchParams = useUrlSearchParams();
-const token = useLocalStorage('token', undefined);
+const token = useLocalStorage('token', '');
 if (searchParams.token) {
   token.value = searchParams.token as string;
 }
 
+console.log(process.env.GATE_LOCATION);
 let payload = decodePayload(token.value);
-let gate = new URL(import.meta.env.GATE_LOCATION);
+let gate = new URL(process.env.GATE_LOCATION ?? '');
 gate.searchParams.set('callback', window.location.origin);
 
 const links: [string, string][] = [
-  ["stream", "/stream/"],
-  ["key", "/pgp.asc"],
-  [ payload?.name ?? "admin", gate.href],
+  ['stream', '/stream/'],
+  ['key', '/pgp.asc'],
+  [payload?.name ?? 'admin', gate.href],
 ];
 
 function makeLocalLink(link: string): string {
@@ -27,8 +27,7 @@ function makeLocalLink(link: string): string {
 
 function decodePayload(token: string | null): object | null {
   let m = token?.trim().match(/^\s*([0-9a-zA-Z\+\-]+)\.([0-9a-zA-Z\+\-]+)\.([0-9a-zA-Z\+\-]+)\s*/);
-  if (!m)
-  {
+  if (!m) {
     return null;
   }
   let payload = JSON.parse(Base64.decode(m[2]));
@@ -46,7 +45,8 @@ function decodePayload(token: string | null): object | null {
     <div class="tw-flex tw-flex-col tw-justify-center tw-gap-4">
       <ConveyGameOfLife :width="28" :height="21" class="tw-place-self-end tw-self-center"></ConveyGameOfLife>
       <span class="tw-flex tw-flex-row tw-place-self-center tw-self-center tw-place-content-center tw-gap-2">
-        <button v-for="link in links" :onclick="makeLocalLink(link[1])" class="tw-place-self-center tw-self-center tw-basis-1">
+        <button v-for="link in links" :onclick="makeLocalLink(link[1])"
+          class="tw-place-self-center tw-self-center tw-basis-1">
           {{ link[0] }}
         </button>
       </span>

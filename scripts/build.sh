@@ -15,6 +15,8 @@ echo output_directory=$outdir
 
 export INFO_NOW=$(date -u '+%s')
 
+yarn build
+
 echo "================ data ================"
 export DATA_DIR=$(mktemp -d)
 if [ -n "${LOCAL_DATA_REPO}" ]; then
@@ -23,34 +25,10 @@ else
     echo data_directory=$DATA_DIR
     git clone $DATA_REPO $DATA_DIR --depth 1 --branch $DATA_REPO_BRANCH
 fi
-
-echo "================ main ================"
-cd $root/main
-if [ -n "${CI}" ]; then
-    yarn install --no-lockfile
-fi
-yarn build
-mkdir -p $outdir/
-cp -r $root/main/dist/* $outdir/
-
-echo "================ stream ================"
-cd $root/stream
-if [ -n "${CI}" ]; then
-    yarn global add @quasar/cli
-    yarn install --no-lockfile
-fi
-echo "STREAM_MEDIA_BASE=${STREAM_MEDIA_BASE}"
-echo "STREAM_PATH_PREFIX=${STREAM_PATH_PREFIX}"
-yarn quasar build
 yarn data
-mkdir -p $outdir/stream
-cp -r $root/stream/dist/* $outdir/stream
 
 echo "================ media ================"
 mkdir -p $outdir/media
 cp -r $DATA_DIR/media/* $outdir/media
-
-echo "================ statics ================"
-cp -r $DATA_DIR/statics/* $outdir/
 
 rm -rf $DATA_DIR

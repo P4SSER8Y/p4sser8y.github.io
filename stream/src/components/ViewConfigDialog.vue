@@ -58,10 +58,9 @@
 
 <script setup lang="ts">
 import { useDialogPluginComponent } from 'quasar';
-import { useViewConfigStore } from 'src/stores/viewConfig';
+import { useViewConfigStore } from '../stores/viewConfig';
 import { storeToRefs } from 'pinia';
 import { useRouter } from 'vue-router';
-import process from 'process';
 import { useLocalStorage } from '@vueuse/core'
 import { Base64 } from 'js-base64'
 import { computed } from 'vue';

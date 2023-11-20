@@ -5,12 +5,7 @@
             <template v-slot:title>
                 <div class="text-h4">
                     {{ item.title }}
-                    <q-badge
-                        rounded
-                        color="secondary"
-                        :label="item.records.length"
-                        align="top"
-                    />
+                    <q-badge rounded color="secondary" :label="item.records.length" align="top" />
                 </div>
             </template>
             <CardLayout :data="item.records"></CardLayout>
@@ -21,15 +16,15 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue';
 import { storeToRefs } from 'pinia';
-import { useViewConfigStore } from 'src/stores/viewConfig';
-import { useDataStore } from 'src/stores/data';
+import { useViewConfigStore } from '../stores/viewConfig';
+import { useDataStore } from '../stores/data';
 import {
     classify_by_timestamp_format,
     get_latest_timestamp,
     Record,
     sever_record,
-} from 'src/models/models';
-import CardLayout from 'src/layouts/CardLayout.vue';
+} from '../models/models';
+import CardLayout from '../layouts/CardLayout.vue';
 import ErrorNotFound from './ErrorNotFound.vue';
 
 const viewConfig = storeToRefs(useViewConfigStore());

@@ -15,7 +15,7 @@ import { parseAllDocuments } from 'yaml';
 import fse from 'fs-extra';
 const { copySync, removeSync } = fse;
 
-let dst = join(dirname(fileURLToPath(import.meta.url)), '../dist');
+let dst = join(dirname(fileURLToPath(import.meta.url)), '..', 'dist', process.env.STREAM_PATH_PREFIX);
 let src = join(process.env.DATA_DIR, 'stream');
 console.log(`copy "${src}" to "${dst}`);
 

@@ -1,27 +1,41 @@
 {
-  "name": "z-main",
-  "version": "0.0.0",
+  "name": "blackbox",
+  "version": "2.0.0",
   "license": "WTFPL",
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "serve": "vite preview"
+    "build": "vue-tsc && vite build",
+    "serve": "vite preview",
+    "lint": "eslint --ext .js,.ts,.vue ./",
+    "format": "prettier --write \"**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",
+    "test": "echo \"No test specified\" && exit 0",
+    "data": "node ./scripts/update.mjs"
   },
   "dependencies": {
+    "@quasar/extras": "^1.16.8",
+    "@quasar/vite-plugin": "^1.6.0",
+    "@vitejs/plugin-vue": "^4.5.0",
     "@vueuse/core": "^10.6.1",
+    "axios": "^1.6.2",
+    "dayjs": "^1.11.10",
     "js-base64": "^3.7.5",
-    "vue": "^3.2.31"
+    "pinia": "^2.1.7",
+    "quasar": "^2.14.0",
+    "sass": "^1.33",
+    "vue": "^3.3.8",
+    "vue-router": "^4.2.5"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.5.0",
-    "@vue/cli-plugin-typescript": "^5.0.8",
-    "@vue/compiler-sfc": "^3.2.31",
-    "@vue/tsconfig": "^0.4.0",
-    "autoprefixer": "^10.4.2",
+    "@babel/types": "^7.23.4",
+    "@types/node": "^20.9.2",
+    "autoprefixer": "^10.4.16",
     "daisyui": "^4.4.2",
-    "postcss": "^8.4.7",
-    "tailwindcss": "^3.0.23",
+    "fs-extra": "^11.1.1",
+    "postcss": "^8.4.31",
+    "prettier": "^3.1.0",
+    "tailwindcss": "^3.3.5",
+    "typescript": "^5.2.2",
     "vite": "^5.0.0",
     "vue-tsc": "^1.8.22"
   }

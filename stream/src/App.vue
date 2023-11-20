@@ -4,10 +4,10 @@
       <router-view />
     </q-page-container>
     <q-page-sticky>
-      <q-btn @click="openConfig" icon="settings" style="opacity: 0.25"></q-btn>
+      <q-btn @click="openConfig" iconsrc="settings" style="opacity: 0.25"></q-btn>
     </q-page-sticky>
   </q-layout>
-  <div v-for="i of fireflyQuantity" class="firefly" :key="i"></div>
+  <!-- <div v-for="i of fireflyQuantity" class="firefly" :key="i"></div> -->
 </template>
 
 <script setup lang="ts">
@@ -15,10 +15,10 @@ import { onMounted } from 'vue';
 import { useQuasar } from 'quasar';
 import { useDataStore } from './stores/data';
 import { storeToRefs } from 'pinia';
-import { api, netlify } from 'boot/axios';
-import ViewConfigDialog from 'src/components/ViewConfigDialog.vue';
+import { api, netlify } from './boot/axios';
+import ViewConfigDialog from './components/ViewConfigDialog.vue';
 
-const fireflyQuantity = 37;
+// const fireflyQuantity = 37;
 
 const $q = useQuasar();
 $q.dark.set(true);
@@ -32,11 +32,11 @@ onMounted(async () => {
 async function update() {
   try {
     if (process.env.NETLIFY) {
-      let raw = await netlify.get('stream-query-all-records');
+      let raw = await netlify!.get('stream-query-all-records');
       data.data.value = raw.data;
     }
     else {
-      let raw = await api.get('records.json');
+      let raw = await api!.get('records.json');
       data.data.value = raw.data;
     }
   } catch (e) {
@@ -55,6 +55,7 @@ function openConfig() {
 </script>
 
 <style lang="sass">
+@use "sass:math"
 $fireflyQuantity: 37
 
 .firefly
@@ -106,8 +107,8 @@ $fireflyQuantity: 37
 
   @keyframes move#{$i}
     @for $step from 0 through $steps
-      #{$step * (100 / $steps)}%
-        transform: translateX(random(100) - 50vw) translateY(random(100) - 50vh) scale(random(75) / 100 + .25)
+      #{$step * math.div(100, $steps)}%
+        transform: translateX(random(100) - 50vw) translateY(random(100) - 50vh) scale(math.div(random(75), 100) + .25)
 
 @keyframes drift
   0%
