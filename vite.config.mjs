@@ -26,8 +26,9 @@ export default defineConfig({
   server: {
     host: true,
     proxy: {
-      '/stream/records.json': 'https://blackbox.32323235.xyz/'
-    }
+      '/stream/records.json': process.env.PROXY_SERVER,
+      '/media': process.env.PROXY_SERVER,
+    },
   },
   envPrefix: ['INFO_'],
   define: {
