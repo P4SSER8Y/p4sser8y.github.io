@@ -25,16 +25,14 @@ export default defineConfig({
   },
   server: {
     host: true,
-    proxy: {
-      '/stream/records.json': process.env.PROXY_SERVER,
-      '/media': process.env.PROXY_SERVER,
-    },
+    proxy: {},
   },
   envPrefix: ['INFO_'],
   define: {
     'process.env.INFO_NOW': process.env.INFO_NOW,
     'process.env.GATE_LOCATION': JSON.stringify(process.env.GATE_LOCATION),
     'process.env.NETLIFY': process.env.NETLIFY,
+    'process.env.STREAM_RECORD_PATH': JSON.stringify(process.env.STREAM_RECORD_PATH),
     'process.env.STREAM_PATH_PREFIX': JSON.stringify(process.env.STREAM_PATH_PREFIX),
     'process.env.STREAM_MEDIA_BASE': JSON.stringify(process.env.STREAM_MEDIA_BASE),
   },

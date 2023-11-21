@@ -15,17 +15,19 @@
 
 ### Environment Variables
 
-| Key                    | Default  | Description                      |
-| ---------------------- | -------- | -------------------------------- |
-| STREAM_PATH_PREFIX     | `stream` | prefix of stream                 |
-| STREAM_MEDIA_BASE      | `/media` | prefix of media                  |
-|                        |          |                                  |
-| OS_STATIC_PATH         | `./dist` |                                  |
-| OS_CORS_DOMAIN_PATTERN | `.*`     |                                  |
-| OS_DATA_PATH_BASE      | `./data` |                                  |
-|                        |          |                                  |
-| DATA_REPO              | ` `      | git URL of data repo             |
-| DATA_REPO_BRANCH       | ` `      | branch of data repo              |
-|                        |          |                                  |
-| INFO_NOW               | ` `      | UTC timestamp of build time      |
-| GATE_LOCATION          | ` `      | location for authentication gate |
+| Key                    | Default               | Description                      |
+| ---------------------- | --------------------- | -------------------------------- |
+| STREAM_PATH_PREFIX     | `stream`              | prefix of stream                 |
+| STREAM_RECORD_PATH     | `/stream/record.json` | path of `record.json`            |
+| STREAM_MEDIA_BASE      | `/media`              | prefix of media                  |
+|                        |                       |                                  |
+| OS_STATIC_PATH         | `./dist`              |                                  |
+| OS_CORS_DOMAIN_PATTERN | `.*`                  |                                  |
+| OS_DATA_PATH_BASE      | `./data`              |                                  |
+|                        |                       |                                  |
+| STATIC_DATA            |                       | make data static                 |
+| DATA_REPO              | ` `                   | git URL of data repo             |
+| DATA_REPO_BRANCH       | ` `                   | branch of data repo              |
+|                        |                       |                                  |
+| INFO_NOW               | ` `                   | UTC timestamp of build time      |
+| GATE_LOCATION          | ` `                   | location for authentication gate |

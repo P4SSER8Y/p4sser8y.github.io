@@ -6,6 +6,7 @@ on:
       - ocean
 
 env:
+  STREAM_RECORD_PATH: ${{ vars.STREAM_RECORD_PATH }}
   STREAM_MEDIA_BASE: ${{ vars.STREAM_MEDIA_BASE }}
   STREAM_PATH_PREFIX: ${{ vars.STREAM_PATH_PREFIX }}
   DATA_REPO: ${{ secrets.DATA_REPO }}

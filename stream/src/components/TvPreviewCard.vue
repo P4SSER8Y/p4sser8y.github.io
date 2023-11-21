@@ -39,6 +39,7 @@ import { TvNote, TvRecord } from '../models/models';
 import dayjs, { Dayjs } from 'dayjs';
 import { useViewConfigStore } from '../stores/viewConfig';
 import { storeToRefs } from 'pinia';
+import { convertAssetsToFullPath } from '../utils';
 // import DatabaseLink from './DatabaseLink.vue';
 
 const viewConfig = storeToRefs(useViewConfigStore());
@@ -53,7 +54,7 @@ const poster = computed(() => {
         poster_idx.value >= props.data.info.poster.length
     )
         return null;
-    let link = formatAssets(props.data.info.poster[poster_idx.value]);
+    let link = convertAssetsToFullPath(props.data.info.poster[poster_idx.value]);
     return link;
 });
 
@@ -90,17 +91,6 @@ const statusColor = computed(
             ['done', 'primary'],
         ]).get(latestNote.value?.status ?? '') ?? 'primary'
 );
-
-function formatAssets(link: string | undefined): string | null {
-    if (!link || link.length == 0) {
-        return null;
-    }
-    if (link.startsWith('http://') || link.startsWith('https://')) {
-        return link;
-    } else {
-        return `${process.env.STREAM_MEDIA_BASE}/${link}`;
-    }
-}
 
 function nextPoster() {
     if (poster_idx.value >= (props.data.info.poster?.length ?? 0)) {
