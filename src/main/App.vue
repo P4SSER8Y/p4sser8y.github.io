@@ -1,16 +1,12 @@
 <script setup lang="ts">
 import ConveyGameOfLife from './ConveyGameOfLife.vue';
-import { now, useLocalStorage, useUrlSearchParams } from '@vueuse/core';
+import { now, useLocalStorage } from '@vueuse/core';
 import { decodeJwtPayload } from '../utils/jwt'
 import { ComputedRef, Ref, computed } from 'vue';
 import { raven } from '../utils/raven';
 
 const buildTime = new Date(parseInt(process.env.INFO_NOW ?? '') * 1000).toLocaleString();
-const searchParams = useUrlSearchParams();
 const token = useLocalStorage('token', '');
-if (searchParams.token) {
-  token.value = searchParams.token as string;
-}
 
 let name = computed(() => {
   let payload = decodeJwtPayload(token.value);
