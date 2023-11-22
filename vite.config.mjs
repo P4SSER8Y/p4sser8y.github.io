@@ -40,7 +40,11 @@ export default defineConfig({
   server: {
     host: true,
     proxy: {
-      '/stream/records.json': process.env.STREAM_RECORD_PATH,
+      '^/proxy': {
+        target: process.env.PROXY_SERVER,
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/proxy/, ''),
+      },
     },
   },
 });
