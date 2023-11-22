@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import IconFont from 'src/assets/IconFont.vue';
+import IconFont from '../assets/IconFont.vue';
 import { computed } from 'vue';
 
 enum IconType {

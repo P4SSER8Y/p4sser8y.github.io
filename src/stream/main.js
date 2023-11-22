@@ -15,11 +15,11 @@ import '@quasar/extras/material-icons/material-icons.css';
 // Import Quasar css
 import 'quasar/src/css/index.sass';
 
-import route from './src/router/index.ts';
+import route from './router/index.ts';
 
 // Assumes your root component is App.vue
 // and placed in same folder as main.js
-import App from './src/App.vue';
+import App from './App.vue';
 
 const app = createApp(App);
 

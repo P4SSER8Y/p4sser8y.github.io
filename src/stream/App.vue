@@ -36,7 +36,7 @@ async function update() {
       data.data.value = raw.data;
     }
     else {
-      let raw = await api!.get(process.env.STREAM_RECORD_PATH);
+      let raw = await api!.get(process.env.STREAM_RECORD_PATH!);
       data.data.value = raw.data;
     }
   } catch (e) {
