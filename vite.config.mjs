@@ -1,17 +1,22 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import { resolve } from 'path';
-// import { quasar, transformAssetUrls } from '@quasar/vite-plugin';
+import { quasar, transformAssetUrls } from '@quasar/vite-plugin';
 
 export default defineConfig({
   plugins: [
     vue({
-      // template: { transformAssetUrls },
+      template: { transformAssetUrls },
     }),
-    // quasar({
-    //   // sassVariables: resolve(__dirname, 'quasar.variables.scss'),
-    // }),
+    quasar({
+      sassVariables: resolve(__dirname, 'quasar.variables.scss'),
+    }),
   ],
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'src'),
+    },
+  },
   build: {
     outDir: 'dist',
     emptyOutDir: true,
@@ -23,10 +28,6 @@ export default defineConfig({
       },
     },
   },
-  server: {
-    host: true,
-    proxy: {},
-  },
   envPrefix: ['INFO_'],
   define: {
     'process.env.INFO_NOW': process.env.INFO_NOW,
@@ -35,5 +36,11 @@ export default defineConfig({
     'process.env.STREAM_RECORD_PATH': JSON.stringify(process.env.STREAM_RECORD_PATH),
     'process.env.STREAM_PATH_PREFIX': JSON.stringify(process.env.STREAM_PATH_PREFIX),
     'process.env.STREAM_MEDIA_BASE': JSON.stringify(process.env.STREAM_MEDIA_BASE),
+  },
+  server: {
+    host: true,
+    proxy: {
+      '/stream/records.json': process.env.STREAM_RECORD_PATH,
+    },
   },
 });

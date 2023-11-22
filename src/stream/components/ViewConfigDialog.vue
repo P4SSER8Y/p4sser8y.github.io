@@ -32,9 +32,9 @@
 
                     <span class="text"> Home </span>
                     <q-btn href="/" no-caps> Go </q-btn>
-                    
+
                     <span class="text"> User </span>
-                    <q-btn href="/" no-caps> {{  user ?? "???" }}</q-btn>
+                    <q-btn href="/" no-caps> {{ user ?? "???" }}</q-btn>
                 </div>
             </q-card-section>
             <q-separator />
@@ -62,8 +62,8 @@ import { useViewConfigStore } from '../stores/viewConfig';
 import { storeToRefs } from 'pinia';
 import { useRouter } from 'vue-router';
 import { useLocalStorage } from '@vueuse/core'
-import { Base64 } from 'js-base64'
 import { computed } from 'vue';
+import { decodeJwtPayload } from '../../utils/jwt';
 
 const router = useRouter();
 
@@ -75,14 +75,7 @@ const now = process.env.INFO_NOW ? ((new Date(parseInt(process.env.INFO_NOW) * 1
 
 const token = useLocalStorage('token', '');
 
-const user = computed(() => {
-    let m = token.value?.trim().match(/^\s*([0-9a-zA-Z\+\-]+)\.([0-9a-zA-Z\+\-]+)\.([0-9a-zA-Z\+\-]+)\s*/);
-    if (!m)
-    {
-        return null;
-    }
-    return JSON.parse(Base64.decode(m[2]))?.name as string | null;
-})
+const user = computed(() => decodeJwtPayload(token.value)?.name)
 
 function switchPage(page: string) {
     router.push(`/${page}`);

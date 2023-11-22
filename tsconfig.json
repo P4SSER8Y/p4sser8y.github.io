@@ -1,15 +1,13 @@
 {
   "include": [
     "env.d.ts",
-    "main/**/*.{ts,vue}",
-    "stream/**/*.{ts,vue}"
+    "src/**/*.{ts,vue}",
   ],
   "compilerOptions": {
-    "baseUrl": "/",
+    "baseUrl": ".",
     "paths": {
       "@/*": [
-        "./main/*",
-        "./stream/*"
+        "src/*"
       ]
     },
     "target": "ES2022",
