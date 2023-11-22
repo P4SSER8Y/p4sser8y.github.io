@@ -34,7 +34,7 @@
                     <q-btn href="/" no-caps> Go </q-btn>
 
                     <span class="text"> User </span>
-                    <q-btn href="/" no-caps> {{ user ?? "???" }}</q-btn>
+                    <q-btn no-caps @click="triggerRaven"> {{ user ?? "???" }}</q-btn>
                 </div>
             </q-card-section>
             <q-separator />
@@ -64,6 +64,7 @@ import { useRouter } from 'vue-router';
 import { useLocalStorage } from '@vueuse/core'
 import { computed } from 'vue';
 import { decodeJwtPayload } from '../../utils/jwt';
+import { raven } from '../../utils/raven';
 
 const router = useRouter();
 
@@ -79,6 +80,10 @@ const user = computed(() => decodeJwtPayload(token.value)?.name)
 
 function switchPage(page: string) {
     router.push(`/${page}`);
+}
+
+function triggerRaven() {
+    raven(process.env.GATE_LOCATION).then((token) => console.log(decodeJwtPayload(token))).catch((e) => console.log(e));
 }
 </script>
 

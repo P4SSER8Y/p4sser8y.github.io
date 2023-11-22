@@ -25,6 +25,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         stream: resolve(__dirname, 'stream/index.html'),
+        raven: resolve(__dirname, 'raven/index.html'),
       },
     },
   },

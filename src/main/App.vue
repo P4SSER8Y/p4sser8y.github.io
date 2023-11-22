@@ -3,6 +3,7 @@ import ConveyGameOfLife from './ConveyGameOfLife.vue';
 import { now, useLocalStorage, useUrlSearchParams } from '@vueuse/core';
 import { decodeJwtPayload } from '../utils/jwt'
 import { ComputedRef, Ref, computed } from 'vue';
+import { raven } from '../utils/raven';
 
 const buildTime = new Date(parseInt(process.env.INFO_NOW ?? '') * 1000).toLocaleString();
 const searchParams = useUrlSearchParams();
@@ -27,17 +28,21 @@ let name = computed(() => {
   }
   return 'admin';
 })
-let gate = new URL(process.env.GATE_LOCATION ?? '');
-gate.searchParams.set('callback', window.location.origin);
-
-const links: [string | Ref<string> | ComputedRef<string>, string][] = [
+const links: [string | Ref<string> | ComputedRef<string>, string | (() => void)][] = [
   ['stream', '/stream/'],
   ['key', '/pgp.asc'],
-  [name, gate.href],
+  [name, triggerRaven],
 ];
 
-function makeLocalLink(link: string): string {
-  return `window.location.href='${link}'`;
+function makeLocalLink(link: string | any): string | any {
+  if (typeof link === 'string')
+    return `window.location.href='${link}'`;
+  else
+    return link;
+}
+
+function triggerRaven() {
+    raven(process.env.GATE_LOCATION).then((token) => console.log(decodeJwtPayload(token))).catch((e) => console.log(e));
 }
 </script>
 
