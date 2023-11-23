@@ -21,6 +21,7 @@
     } else {
       console.log("call Hodor");
       var gate = url.searchParams.get("gate");
+      url.search = "";
       if (gate) {
         var dest = new URL(gate);
         dest.searchParams.set("c", url.href);
