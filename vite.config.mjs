@@ -33,6 +33,7 @@ export default defineConfig({
   define: {
     'process.env.INFO_NOW': process.env.INFO_NOW,
     'process.env.GATE_LOCATION': JSON.stringify(process.env.GATE_LOCATION),
+    'process.env.GATE_RP_ID': JSON.stringify(process.env.GATE_RP_ID),
     'process.env.NETLIFY': process.env.NETLIFY,
     'process.env.STREAM_RECORD_PATH': JSON.stringify(process.env.STREAM_RECORD_PATH),
     'process.env.STREAM_PATH_PREFIX': JSON.stringify(process.env.STREAM_PATH_PREFIX),

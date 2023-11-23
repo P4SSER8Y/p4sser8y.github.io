@@ -12,6 +12,7 @@
     var p = document.getElementById("m");
     var url = new URL(window.location.href);
     var token = url.searchParams.get("token");
+    var origin = url.searchParams.get("origin");
     if (token) {
       console.log("update token to " + token);
       localStorage.setItem("token", token);
@@ -24,6 +25,7 @@
         var dest = new URL(gate);
         dest.searchParams.set("c", url.href);
         dest.searchParams.set("t", '1');
+        dest.searchParams.set("o", origin);
         window.location.assign(dest.href);
       } else {
         p.innerText = "gate not defined";
