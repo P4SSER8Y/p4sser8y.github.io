@@ -12,7 +12,7 @@ env:
   DATA_REPO: ${{ secrets.DATA_REPO }}
   DATA_REPO_BRANCH: ${{ secrets.DATA_REPO_BRANCH }}
   GATE_LOCATION: ${{ secrets.GATE_LOCATION }}
-  GATE_RP_ID: ${{ secrets.GATE_RP_ID }}
+  GATE_FAMILY: ${{ secrets.GATE_FAMILY }}
 
 jobs:
   build:

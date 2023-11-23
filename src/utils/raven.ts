@@ -13,7 +13,7 @@ async function raven(gate?: string, timeout: number = Infinity): Promise<string>
   localStorage.removeItem('token');
   let url = new URL('/raven/', window.location.href);
   url.searchParams.set('gate', gate);
-  url.searchParams.set('origin', process.env.GATE_RP_ID!);
+  url.searchParams.set('family', process.env.GATE_FAMILY);
   let win = window.open(url.href, '_blank', 'menubar=no,toolbar=no,location=yes');
   if (!win) throw Error("Raven doesn't known where to fly");
 

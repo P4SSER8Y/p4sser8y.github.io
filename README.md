@@ -31,4 +31,4 @@
 |                        |                       |                                  |
 | INFO_NOW               | ` `                   | UTC timestamp of build time      |
 | GATE_LOCATION          | ` `                   | location for authentication gate |
-| GATE_RP_ID             | ` `                   | RP-ID for authentication gate    |
+| GATE_FAMILY            | ` `                   | family for authentication gate   |
