@@ -13,8 +13,8 @@ let name = computed(() => {
   if (payload) {
     if (payload.exp) {
       if (payload.exp > now() / 1000) {
-        if (payload.name) {
-          return payload.name;
+        if (payload.n) {
+          return payload.n;
         }
       }
     }

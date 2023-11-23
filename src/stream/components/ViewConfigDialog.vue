@@ -76,7 +76,7 @@ const now = process.env.INFO_NOW ? ((new Date(parseInt(process.env.INFO_NOW) * 1
 
 const token = useLocalStorage('token', '');
 
-const user = computed(() => decodeJwtPayload(token.value)?.name)
+const user = computed(() => decodeJwtPayload(token.value)?.n)
 
 function switchPage(page: string) {
     router.push(`/${page}`);

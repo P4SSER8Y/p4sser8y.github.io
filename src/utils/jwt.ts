@@ -3,7 +3,7 @@ import { Base64 } from 'js-base64';
 
 export { decodeJwtPayload };
 
-type JwtPayload = { name?: string; exp?: number };
+type JwtPayload = { n?: string; f?: string, exp?: number };
 
 function decodeJwtPayload(jwt: string): JwtPayload | null {
   let m = jwt.trim().match(/^([0-9a-zA-Z\+\-]+)\.([0-9a-zA-Z\+\-]+)\.([0-9a-zA-Z\+\-]+)/);
