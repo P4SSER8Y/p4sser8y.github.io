@@ -5,19 +5,17 @@ on:
     branches:
       - ocean
 
-env:
-  STREAM_RECORD_PATH: ${{ vars.STREAM_RECORD_PATH }}
-  STREAM_MEDIA_BASE: ${{ vars.STREAM_MEDIA_BASE }}
-  STREAM_PATH_PREFIX: ${{ vars.STREAM_PATH_PREFIX }}
-  DATA_REPO: ${{ secrets.DATA_REPO }}
-  DATA_REPO_BRANCH: ${{ secrets.DATA_REPO_BRANCH }}
-  GATE_LOCATION: ${{ secrets.GATE_LOCATION }}
-  GATE_FAMILY: ${{ secrets.GATE_FAMILY }}
-
 jobs:
   build:
     name: space
     runs-on: ubuntu-latest
+    environment: github-pages
+    env:
+      STREAM_RECORD_PATH: ${{ vars.STREAM_RECORD_PATH }}
+      STREAM_MEDIA_BASE: ${{ vars.STREAM_MEDIA_BASE }}
+      STREAM_PATH_PREFIX: ${{ vars.STREAM_PATH_PREFIX }}
+      GATE_LOCATION: ${{ vars.GATE_LOCATION }}
+      GATE_FAMILY: ${{ vars.GATE_FAMILY }}
     steps:
       - uses: actions/checkout@v3
       - name: Set Node.js
