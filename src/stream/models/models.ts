@@ -7,6 +7,7 @@ export interface Record {
 }
 
 export interface MovieRecord extends Record {
+    type: 'movie';
     info: MovieInfo;
     notes?: MovieNote[];
 }
@@ -16,6 +17,7 @@ export function isMovieRecord(obj: Record): obj is MovieRecord {
 }
 
 export interface TvRecord extends Record {
+    type: 'tv';
     info: TvInfo;
     notes?: TvNote[];
 }
@@ -65,7 +67,7 @@ export interface TvInfo {
 export function sever_record(record: Record): Record[] {
     const ret: Record[] = [];
     for (const item of record.notes ?? []) {
-        const t = {...record};
+        const t = { ...record };
         t.notes = [item];
         ret.push(t);
     }
@@ -91,7 +93,7 @@ export function classify_by_timestamp_format(
                 tmp.set(key, values);
             }
             for (const eposides of tmp.values()) {
-                const t = {...record};
+                const t = { ...record };
                 t.notes = [{ ...note }];
                 t.notes[0].eposides = eposides as Eposide[];
                 ret.push(t);
