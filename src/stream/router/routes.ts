@@ -7,11 +7,6 @@ const routes: RouteRecordRaw[] = [
         props: true,
         children: [
             {
-                path: 'editor',
-                component: () => import('../pages/Editor.vue'),
-                props: true,
-            },
-            {
                 path: 'posterWall',
                 component: () => import('../pages/PosterWall.vue'),
                 props: true,
