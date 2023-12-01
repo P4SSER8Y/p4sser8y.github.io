@@ -41,7 +41,86 @@ export type FieldDescription = StringType | NumberType | ObjectType | ListType |
 
 export const TvFieldDescription: ObjectType = {
     id: '',
-    label: 'TV',
+    label: '',
+    type: EditorType.Object,
+    isNullable: false,
+    node: [
+        {
+            id: 'info',
+            label: 'infomation',
+            type: EditorType.Object,
+            isNullable: false,
+            node: [
+                {
+                    id: 'title',
+                    type: EditorType.String,
+                    label: 'title',
+                    isNullable: false,
+                },
+                {
+                    id: 'localTitle',
+                    type: EditorType.String,
+                    label: 'local title',
+                    isNullable: true,
+                },
+                {
+                    id: 'tags',
+                    type: EditorType.Tags,
+                    label: 'tags',
+                    isNullable: true,
+                },
+                {
+                    id: 'poster',
+                    type: EditorType.List,
+                    label: 'poster',
+                    isNullable: false,
+                    node: {
+                        id: 'poster',
+                        type: EditorType.String,
+                        label: 'link',
+                        isNullable: false,
+                    }
+                }
+            ]
+        },
+        {
+            id: 'notes',
+            label: 'notes',
+            type: EditorType.List,
+            isNullable: false,
+            node: {
+                id: 'round',
+                type: EditorType.Object,
+                label: '',
+                isNullable: false,
+                node: [
+                    {
+                        id: 'status',
+                        type: EditorType.Status,
+                        label: 'status',
+                        isNullable: false,
+                    },
+                    {
+                        id: 'rate',
+                        type: EditorType.Rating,
+                        label: 'rate',
+                        isNullable: true,
+                    },
+                    {
+                        id: 'eposides',
+                        type: EditorType.Eposide,
+                        label: 'eposides',
+                        isNullable: false,
+                    }
+                ]
+            }
+        }
+    ]
+}
+
+export const MovieFieldDescription: ObjectType = {
+    id: '',
+    label: '',
     type: EditorType.Object,
     isNullable: false,
     node: [
