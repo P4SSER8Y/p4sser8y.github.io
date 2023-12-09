@@ -31,14 +31,8 @@ onMounted(async () => {
 
 async function update() {
   try {
-    if (process.env.NETLIFY) {
-      let raw = await netlify!.get('stream-query-all-records');
-      data.data.value = raw.data;
-    }
-    else {
-      let raw = await api!.get(process.env.STREAM_RECORD_PATH!);
-      data.data.value = raw.data;
-    }
+    let raw = await api!.get(process.env.STREAM_RECORD_PATH!);
+    data.data.value = raw.data;
   } catch (e) {
     data.data.value = [];
   }
