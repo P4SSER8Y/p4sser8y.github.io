@@ -34,7 +34,10 @@
                     <q-btn href="/" no-caps> Go </q-btn>
 
                     <span class="text"> User </span>
-                    <q-btn no-caps @click="triggerRaven"> {{ user ?? "???" }}</q-btn>
+                    <q-btn-group>
+                        <q-btn no-caps @click="triggerRaven"> {{ user ?? "???" }}</q-btn>
+                        <q-btn v-if="user" @click="updateCache"> cache </q-btn>
+                    </q-btn-group>
                 </div>
             </q-card-section>
             <q-separator />
@@ -65,6 +68,7 @@ import { useLocalStorage } from '@vueuse/core'
 import { computed } from 'vue';
 import { decodeJwtPayload } from '../../utils/jwt';
 import { raven } from '../../utils/raven';
+import { netlify } from '../boot/axios'
 
 const router = useRouter();
 
@@ -84,6 +88,10 @@ function switchPage(page: string) {
 
 function triggerRaven() {
     raven(process.env.GATE_LOCATION).then((token) => console.log(decodeJwtPayload(token))).catch((e) => console.log(e));
+}
+
+function updateCache() {
+    netlify?.post('stream-cache', token.value).then((x) => {console.log(x.status)});
 }
 </script>
 

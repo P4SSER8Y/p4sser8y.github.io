@@ -18,9 +18,8 @@ let api: AxiosInstance | undefined = undefined;
 let netlify: AxiosInstance | undefined = undefined;
 if (process.env.NETLIFY) {
     netlify = axios.create({ baseURL: '/.netlify/functions' });
-} else {
-    api = axios.create({ baseURL: process.env.STREAM_DATA_BASE_URL });
 }
+api = axios.create({ baseURL: process.env.STREAM_DATA_BASE_URL });
 
 export default boot(({ app }) => {
     app.config.globalProperties.$axios = axios;
