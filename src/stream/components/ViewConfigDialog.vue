@@ -36,7 +36,7 @@
                     <span class="text"> User </span>
                     <q-btn-group>
                         <q-btn no-caps @click="triggerRaven"> {{ user ?? "???" }}</q-btn>
-                        <q-btn v-if="user" @click="updateCache"> cache </q-btn>
+                        <q-btn v-if="user" @click="updateCache" :loading="updatingCache"> cache </q-btn>
                     </q-btn-group>
                 </div>
             </q-card-section>
@@ -65,7 +65,7 @@ import { useViewConfigStore } from '../stores/viewConfig';
 import { storeToRefs } from 'pinia';
 import { useRouter } from 'vue-router';
 import { useLocalStorage } from '@vueuse/core'
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { decodeJwtPayload } from '../../utils/jwt';
 import { raven } from '../../utils/raven';
 import { netlify } from '../boot/axios'
@@ -82,6 +82,8 @@ const token = useLocalStorage('token', '');
 
 const user = computed(() => decodeJwtPayload(token.value)?.n)
 
+const updatingCache = ref(false);
+
 function switchPage(page: string) {
     router.push(`/${page}`);
 }
@@ -91,7 +93,11 @@ function triggerRaven() {
 }
 
 function updateCache() {
-    netlify?.post('stream-cache', token.value).then((x) => {console.log(x.status)});
+    if (netlify)
+    {
+        updatingCache.value = true;
+        netlify.post('stream-cache', token.value).finally(() => { updatingCache.value = false; });
+    }
 }
 </script>
 
