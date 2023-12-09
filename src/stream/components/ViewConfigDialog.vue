@@ -89,7 +89,14 @@ function switchPage(page: string) {
 }
 
 function triggerRaven() {
-    raven(process.env.GATE_LOCATION).then((token) => console.log(decodeJwtPayload(token))).catch((e) => console.log(e));
+    if (user.value)
+    {
+        token.value = '';
+    }
+    else
+    {
+        raven(process.env.GATE_LOCATION).then((token) => console.log(decodeJwtPayload(token))).catch((e) => console.log(e));
+    }
 }
 
 function updateCache() {
