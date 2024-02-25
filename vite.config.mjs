@@ -26,7 +26,8 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         stream: resolve(__dirname, 'stream/index.html'),
         raven: resolve(__dirname, 'raven/index.html'),
-      },
+        coop: resolve(__dirname, 'coop/index.html'),
+      }
     },
   },
   envPrefix: ['INFO_'],

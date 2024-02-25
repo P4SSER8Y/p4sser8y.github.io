@@ -27,6 +27,7 @@ let name = computed(() => {
 const links: [string | Ref<string> | ComputedRef<string>, string | (() => void)][] = [
   ['stream', '/stream/'],
   ['key', '/pgp.asc'],
+  ['coop', '/coop/'],
   [name, triggerRaven],
 ];
 
