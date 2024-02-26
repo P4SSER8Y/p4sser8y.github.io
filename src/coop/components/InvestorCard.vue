@@ -6,7 +6,9 @@ let props = defineProps<{
     investor: Investor;
 }>();
 
+const el_card = ref(null);
 const balance = ref(0);
+const investor = props.investor;
 
 function update(id: number | null) {
     if (id && id != props.investor.id) return;
@@ -14,13 +16,17 @@ function update(id: number | null) {
 }
 
 onMounted(() => update(props.investor.id));
+
+defineExpose({
+    investor,
+});
 Bus.on('update', update);
 </script>
 
 <template>
-    <q-card class="card">
+    <q-card class="card" ref="el_card">
         <q-card-section>
-            {{ props.investor.name }}
+            <div class="name">{{ props.investor.name }}</div>
         </q-card-section>
         <q-card-section class="center">
             {{ balance }}
@@ -29,17 +35,8 @@ Bus.on('update', update);
 </template>
 
 <style scoped>
-@media (orientation: landscape) {
-    .card {
-        height: 33.33dvmin;
-        width: 44.44dvmin;
-    }
-}
-
-@media (orientation: portrait) {
-    .card {
-        height: 24.75dvmin;
-        width: 33.33dvmin;
-    }
+.name {
+    width: 100%;
+    font-size: 1.5rem;
 }
 </style>
