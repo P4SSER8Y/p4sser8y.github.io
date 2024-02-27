@@ -17,6 +17,7 @@
     "@quasar/vite-plugin": "^1.6.0",
     "@vitejs/plugin-vue": "^4.5.0",
     "@vueuse/core": "^10.8.0",
+    "animate.css": "^4.1.1",
     "axios": "^1.6.2",
     "dayjs": "^1.11.10",
     "js-base64": "^3.7.5",
