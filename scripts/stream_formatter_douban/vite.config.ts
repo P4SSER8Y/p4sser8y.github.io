@@ -17,7 +17,7 @@ export default defineConfig({
             entry: 'src/main.ts',
             userscript: {
                 namespace: 'npm/vite-plugin-monkey',
-                match: ['*://movie.douban.com/*'],
+                match: ['*://movie.douban.com/subject/*'],
             },
             build: {
                 externalGlobals: {
