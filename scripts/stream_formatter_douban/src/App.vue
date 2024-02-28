@@ -5,7 +5,11 @@ import Main from './components/Main.vue';
 </script>
 
 <template>
-  <Main />
+    <h2>
+        <i class>WTF</i>
+        · · · · · ·
+    </h2>
+    <Main />
 </template>
 
 <style scoped></style>
