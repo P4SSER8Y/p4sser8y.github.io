@@ -17,6 +17,13 @@ export INFO_NOW=$(date -u '+%s')
 
 yarn build
 
+echo "================ stream_formatter ================"
+pushd ./scripts/stream_formatter_douban
+yarn build
+mkdir -p $outdir/assets/gm
+cp -r ./dist/* $outdir/assets/gm
+popd
+
 if [ -n "${STATIC_DATA}" ]; then
     echo "================ data ================"
     export DATA_DIR=$(mktemp -d)
