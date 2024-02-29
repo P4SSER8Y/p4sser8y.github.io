@@ -41,8 +41,10 @@ onMounted(() => {
 <template>
     <var-space direction="column">
         <var-snackbar v-model:show="info_showed" :duration="1000">{{ info }}</var-snackbar>
-        <var-button type="primary" style="width: 100%" @click="active">refresh</var-button>
-        <var-button type="primary" style="width: 100%" @click="copy">copy</var-button>
+        <var-button-group type="primary" mode="outline">
+            <var-button @click="active">refresh</var-button>
+            <var-button @click="copy">copy</var-button>
+        </var-button-group>
         <var-input readonly textarea variant="outlined" v-model="msg" />
     </var-space>
 </template>
