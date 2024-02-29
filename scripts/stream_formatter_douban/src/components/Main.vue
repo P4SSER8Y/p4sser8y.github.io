@@ -41,12 +41,23 @@ onMounted(() => {
 <template>
     <var-space direction="column">
         <var-snackbar v-model:show="info_showed" :duration="1000">{{ info }}</var-snackbar>
-        <var-button-group type="primary" mode="outline">
-            <var-button @click="active">refresh</var-button>
-            <var-button @click="copy">copy</var-button>
+        <var-button-group type="primary" mode="outline" style="width: 100%">
+            <var-button @click="active">刷新</var-button>
+            <var-button @click="copy">拷贝</var-button>
         </var-button-group>
-        <var-input readonly textarea variant="outlined" v-model="msg" />
+        <div class="code">
+            <code>
+                <pre>{{ msg }}</pre>
+            </code>
+        </div>
     </var-space>
 </template>
 
-<style scoped></style>
+<style scoped>
+.code {
+    border: 1px solid var(--button-primary-color);
+    border-radius: 5px;
+    padding: .5rem;
+    color: var(--button-primary-color);
+}
+</style>
