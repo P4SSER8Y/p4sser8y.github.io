@@ -1,3 +1,7 @@
+import { GM_xmlhttpRequest } from '$';
+import axios from 'axios';
+import Compressor from 'compressorjs';
+
 export function get_year() {
     let el = document.getElementsByClassName('year')[0];
     if (!el) return null;
@@ -51,4 +55,33 @@ export function get_watched_note() {
         rate: rating,
         timestamp: date,
     };
+}
+
+export function get_poster_link() {
+    let el = document.getElementById('mainpic');
+    if (!el) return null;
+    let img = el.getElementsByTagName('img');
+    if (img.length == 0) return null;
+    let src = img[0].getAttribute('src');
+    if (!src) return null;
+    let re = /(?<=photo\/)\w+(?=\/public)/;
+    let link = src.replace(re, 'l');
+    return link;
+}
+
+export function resize_poster(link: string, callback: (file: Blob | null) => void) {
+    callback(null);
+    GM_xmlhttpRequest({
+        url: link,
+        method: 'GET',
+        responseType: 'blob',
+        onload: (response) => {
+            new Compressor(response.response, {
+                checkOrientation: true,
+                width: 512,
+                mimeType: 'image/webp',
+                success: (blob) => callback(blob),
+            });
+        },
+    });
 }

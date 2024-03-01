@@ -1,7 +1,7 @@
 {
   "name": "stream_formatter_douban",
   "private": true,
-  "version": "0.0.5",
+  "version": "0.1.0",
   "type": "module",
   "author": "P4SSER8Y",
   "scripts": {
@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@varlet/ui": "^3.0.6",
+    "compressorjs": "^1.2.1",
+    "dayjs": "^1.11.10",
     "vue": "^3.4.14",
     "yaml": "^2.4.0"
   },
