@@ -65,7 +65,7 @@ export function get_poster_link() {
     let src = img[0].getAttribute('src');
     if (!src) return null;
     let re = /(?<=photo\/)\w+(?=\/public)/;
-    let link = src.replace(re, 'l');
+    let link = src.replace(re, 'm');
     return link;
 }
 

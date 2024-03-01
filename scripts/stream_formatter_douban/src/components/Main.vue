@@ -73,6 +73,7 @@ onMounted(() => {
         <a v-if="preview" :href="preview" :download="poster_filename">
             <img :src="preview" />
         </a>
+        <var-skeleton v-else loading card :rows="0"></var-skeleton>
     </var-space>
 </template>
 
