@@ -42,8 +42,8 @@ onMounted(() => {
 });
 </script>
 <template>
-    <q-page>
-        <div class="full-width row no-wrap justify-center items-center content-center" :style="{ width: '100dvw', height: '100dvh' }">
+    <q-page class="full-height column justify-center items-center content-center">
+        <div class="full-width row no-wrap justify-center items-center content-center">
             <div v-if="investors" class="grid-container self-center">
                 <template v-for="item in GRID_ALIGNED[investors.length]" class="grid-item">
                     <div v-if="item == null"></div>

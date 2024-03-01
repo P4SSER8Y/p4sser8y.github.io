@@ -1,9 +1,12 @@
 <template>
-    <q-page>
-        <div class="column" style="width: 100dvw; height: 100dvh">
+    <q-page style="width: 100%; height: 100%">
+        <div class="column">
             <h1 class="text-center" style="width: 100%">Monopoly Bank</h1>
             <div class="row no-wrap justify-center items-center content-start">
                 <q-btn v-if="!route.params.ing" label="GO" size="xl" @click="go"></q-btn>
+            </div>
+            <div class="row no-wrap justify-center items-center content-start">
+                <q-btn label="wtf"></q-btn>
             </div>
         </div>
     </q-page>
@@ -49,4 +52,3 @@ function go() {
     router.push({ name: 'desk' });
 }
 </script>
-
