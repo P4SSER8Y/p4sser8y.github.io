@@ -85,3 +85,9 @@ export function resize_poster(link: string, callback: (file: Blob | null) => voi
         },
     });
 }
+
+export function safe_filename(name: string) {
+    name = name.replaceAll(/[@\/\\:：\?\*#\+]|\s/g, '_');
+    name = name.replace(/^[\._]*/, '');
+    return name;
+}

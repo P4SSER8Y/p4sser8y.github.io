@@ -13,6 +13,7 @@ const info_showed = ref(false);
 const poster_link: Ref<string | null> = ref(null);
 const poster_filename: Ref<string | null> = ref(null);
 const preview_buffer: Ref<Blob | null> = ref(null);
+const record_filename: Ref<string | null> = ref(null);
 
 console.log('hello world');
 function active() {
@@ -21,13 +22,16 @@ function active() {
     let info: Record<string, any> = {};
     info.year = utils.get_year();
     info.title = titles[0] ?? '?';
+    record_filename.value = `${info.year}-${titles[0]}.yml`;
+    if (titles[1]) {
+        info.localTitle = titles[1];
+        record_filename.value = `${info.year}-${titles[1]}.yml`;
+    }
+    record_filename.value = utils.safe_filename(record_filename.value);
     info.tags = utils.get_tags();
     info.links = [utils.get_db_link()];
     poster_filename.value = dayjs().format('YYYYMMDD-HHmmss');
     info.poster = [poster_filename.value + '.webp'];
-    if (titles[1]) {
-        info.localTitle = titles[1];
-    }
     poster_link.value = utils.get_poster_link();
     if (poster_filename.value && poster_link.value) {
         poster_filename.value = poster_filename.value + '.' + poster_link.value?.split('.').at(-1);
@@ -48,6 +52,16 @@ function copy() {
     info_showed.value = true;
 }
 
+function download_record() {
+    if (!record_filename.value || !msg.value) return;
+    const url = URL.createObjectURL(new Blob([msg.value], { type: 'application/yaml' }));
+    let tmp = document.createElement('a');
+    tmp.href = url;
+    tmp.download = record_filename.value;
+    tmp.click();
+    URL.revokeObjectURL(url);
+}
+
 const preview = computed(() => {
     if (!preview_buffer.value) return null;
     return window.URL.createObjectURL(preview_buffer.value);
@@ -64,8 +78,10 @@ onMounted(() => {
         <var-button-group type="primary" mode="outline" style="width: 100%">
             <var-button @click="active">刷新</var-button>
             <var-button @click="copy">拷贝</var-button>
+            <var-button @click="download_record" :disabled="!record_filename">下载</var-button>
         </var-button-group>
         <div class="code">
+            <code><pre># {{ record_filename }}</pre></code>
             <code>
                 <pre>{{ msg }}</pre>
             </code>
