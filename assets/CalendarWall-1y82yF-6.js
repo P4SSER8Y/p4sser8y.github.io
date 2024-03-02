@@ -1,0 +1,1 @@
+import{_ as e,c as t,e as c}from"./_plugin-vue_export-helper-Dxsx2kFr.js";const n={},r={class:"text-h1 flex flex-center"};function s(a,o){return t(),c("div",r," wtf ")}const l=e(n,[["render",s]]);export{l as default};
