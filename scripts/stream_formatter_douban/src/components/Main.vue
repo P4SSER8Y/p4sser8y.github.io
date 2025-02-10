@@ -31,7 +31,7 @@ function active() {
     info.tags = utils.get_tags();
     info.links = [utils.get_db_link()];
     poster_filename.value = dayjs().format('YYYYMMDD-HHmmss');
-    info.poster = [poster_filename.value + '.webp'];
+    info.poster = [poster_filename.value + '.avif'];
     poster_link.value = utils.get_poster_link();
     if (poster_filename.value && poster_link.value) {
         poster_filename.value = poster_filename.value + '.' + poster_link.value?.split('.').at(-1);
@@ -43,7 +43,7 @@ function active() {
     let notes: Record<string, any>[] = [];
     notes.push(utils.get_watched_note());
 
-    object.value = { info: info, notes: notes };
+    object.value = { type: "movie|tv", info: info, notes: notes };
 }
 
 function copy() {
