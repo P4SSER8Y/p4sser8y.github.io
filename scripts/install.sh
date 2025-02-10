@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 cd $(dirname $0)/..
-yarn install --no-lockfile
+yarn install
 
 pushd ./scripts/stream_formatter_douban
-yarn install --no-lockfile
+yarn install
 popd
