@@ -18,10 +18,13 @@ const record_filename: Ref<string | null> = ref(null);
 console.log('hello world');
 function active() {
     let titles = utils.get_titles();
+    console.log("[DBFMT] get_titles: ", titles);
 
     let info: Record<string, any> = {};
     info.year = utils.get_year();
+    console.log("[DBFMT] get_year: ", info.year);
     info.title = titles[0] ?? '?';
+    console.log("[DBFMT] get_title: ", info.title);
     record_filename.value = `${info.year}-${titles[0]}.yml`;
     if (titles[1]) {
         info.localTitle = titles[1];
@@ -29,10 +32,14 @@ function active() {
     }
     record_filename.value = utils.safe_filename(record_filename.value);
     info.tags = utils.get_tags();
+    console.log("[DBFMT] get tags: ", info.tags);
     info.links = [utils.get_db_link()];
+    console.log("[DBFMT] get links: ", info.links);
     poster_filename.value = dayjs().format('YYYYMMDD-HHmmss');
     info.poster = [poster_filename.value + '.avif'];
+    console.log("[DBFMT] create poster name: ", info.poster);
     poster_link.value = utils.get_poster_link();
+    console.log("[DBFMT] create poster link: ", poster_link.value);
     if (poster_filename.value && poster_link.value) {
         poster_filename.value = poster_filename.value + '.' + poster_link.value?.split('.').at(-1);
         utils.resize_poster(poster_link.value, (blob) => {
@@ -68,7 +75,7 @@ const preview = computed(() => {
 });
 
 onMounted(() => {
-    active();
+    setTimeout(active, 3000);
 });
 </script>
 
@@ -87,6 +94,7 @@ onMounted(() => {
             </code>
         </div>
         <a v-if="preview" :href="preview" :download="poster_filename">
+            <var-divider description="小图" />
             <img :src="preview" />
         </a>
         <var-skeleton v-else loading card :rows="0"></var-skeleton>

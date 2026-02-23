@@ -60,12 +60,18 @@ export function get_watched_note() {
 export function get_poster_link() {
     let el = document.getElementById('mainpic');
     if (!el) return null;
+    console.log("[DBFMT] get element");
     let img = el.getElementsByTagName('img');
     if (img.length == 0) return null;
+    console.log("[DBFMT] get img");
     let src = img[0].getAttribute('src');
     if (!src) return null;
+    console.log("[DBFMT] get img src: ", src);
     let re = /(?<=photo\/)\w+(?=\/public)/;
+    console.log("[DBFMT] create re: ", re);
     let link = src.replace(re, 'm');
+    console.log("[DBFMT] ", re.exec(src));
+    console.log("[DBFMT] ", link);
     return link;
 }
 
@@ -75,6 +81,9 @@ export function resize_poster(link: string, callback: (file: Blob | null) => voi
         url: link,
         method: 'GET',
         responseType: 'blob',
+        headers: {
+            referer: document.referrer,
+        },
         onload: (response) => {
             new Compressor(response.response, {
                 checkOrientation: true,
@@ -82,6 +91,9 @@ export function resize_poster(link: string, callback: (file: Blob | null) => voi
                 mimeType: 'image/webp',
                 success: (blob) => callback(blob),
             });
+        },
+        onerror: (err) => {
+            console.log('[DBFMT] fetch', link, ' failed: %s', err);
         },
     });
 }
