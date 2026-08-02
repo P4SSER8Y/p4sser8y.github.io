@@ -9,7 +9,7 @@ const info = ref('');
 const info_showed = ref(false);
 
 function active() {
-    poster_filename.value = dayjs().format('YYYYMMDD-HHmmss') + '.webp';
+    poster_filename.value = dayjs().format('YYYYMMDD-HHmmss') + '.avif';
     let link = utils.get_photo_img();
     console.log('[DBFMT] photo link:', link);
     if (link) {
