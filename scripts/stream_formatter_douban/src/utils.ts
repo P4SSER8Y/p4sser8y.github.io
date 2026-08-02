@@ -94,7 +94,7 @@ export function resize_poster(link: string, callback: (file: Blob | null) => voi
         method: 'GET',
         responseType: 'blob',
         headers: {
-            referer: document.referrer,
+            referer: document.referrer || 'https://movie.douban.com/',
         },
         onload: (response) => {
             new Compressor(response.response, {
