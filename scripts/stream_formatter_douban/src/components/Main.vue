@@ -4,6 +4,8 @@ import YAML from 'yaml';
 import * as utils from '../utils';
 import dayjs from 'dayjs';
 
+type Mode = 'movie' | 'tv';
+
 const object = ref({});
 const msg = computed(() => {
     return YAML.stringify(object.value);
@@ -14,8 +16,16 @@ const poster_link: Ref<string | null> = ref(null);
 const poster_filename: Ref<string | null> = ref(null);
 const preview_buffer: Ref<Blob | null> = ref(null);
 const record_filename: Ref<string | null> = ref(null);
+const mode: Ref<Mode> = ref(utils.get_type());
+const user_touched = ref(false);
+const api_episodes: Ref<number | null> = ref(null);
 
-console.log('hello world');
+function switchMode(m: Mode) {
+    user_touched.value = true;
+    mode.value = m;
+    active();
+}
+
 function active() {
     let titles = utils.get_titles();
     console.log("[DBFMT] get_titles: ", titles);
@@ -25,10 +35,21 @@ function active() {
     console.log("[DBFMT] get_year: ", info.year);
     info.title = titles[0] ?? '?';
     console.log("[DBFMT] get_title: ", info.title);
-    record_filename.value = `${info.year}-${titles[0]}.yml`;
     if (titles[1]) {
         info.localTitle = titles[1];
-        record_filename.value = `${info.year}-${titles[1]}.yml`;
+    }
+    let fnTitle = titles[1] ?? titles[0] ?? '?';
+    record_filename.value = `${info.year}-${fnTitle}.yml`;
+    if (mode.value === 'tv') {
+        let season = utils.get_season();
+        if (season) {
+            info.season = season;
+            record_filename.value = `${info.year}-S${season}-${fnTitle}.yml`;
+        }
+        let ecount = api_episodes.value ?? utils.get_episodes_count();
+        if (ecount) info.eposides = ecount;
+        let series = utils.get_series();
+        if (series) info.series = series;
     }
     record_filename.value = utils.safe_filename(record_filename.value);
     info.tags = utils.get_tags();
@@ -48,9 +69,21 @@ function active() {
     }
 
     let notes: Record<string, any>[] = [];
-    notes.push(utils.get_watched_note());
+    let watched = utils.get_watched_note();
+    if (mode.value === 'tv') {
+        notes.push({
+            status: 'ing',
+            rate: watched.rate,
+            eposides: [{
+                eposide: '1',
+                timestamp: watched.timestamp,
+            }],
+        });
+    } else {
+        notes.push(watched);
+    }
 
-    object.value = { type: "movie|tv", info: info, notes: notes };
+    object.value = { type: mode.value, info: info, notes: notes };
 }
 
 function copy() {
@@ -76,6 +109,20 @@ const preview = computed(() => {
 
 onMounted(() => {
     setTimeout(active, 3000);
+    // API 探测类型，若用户未手动切换则自动校正
+    let id = utils.get_subject_id();
+    if (id) {
+        utils.fetch_subject_meta(id).then((meta) => {
+            if (meta) {
+                api_episodes.value = meta.episodes;
+                if (!user_touched.value && meta.type !== mode.value) {
+                    console.log("[DBFMT] api type:", meta.type, "-> auto switch");
+                    mode.value = meta.type;
+                    active();
+                }
+            }
+        });
+    }
 });
 </script>
 
@@ -86,6 +133,10 @@ onMounted(() => {
             <var-button @click="active">刷新</var-button>
             <var-button @click="copy">拷贝</var-button>
             <var-button @click="download_record" :disabled="!record_filename">下载</var-button>
+        </var-button-group>
+        <var-button-group type="warning" mode="outline" style="width: 100%">
+            <var-button :type="mode === 'movie' ? 'warning' : 'default'" @click="switchMode('movie')">Movie</var-button>
+            <var-button :type="mode === 'tv' ? 'warning' : 'default'" @click="switchMode('tv')">TV</var-button>
         </var-button-group>
         <div class="code">
             <code><pre># {{ record_filename }}</pre></code>

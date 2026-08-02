@@ -1,7 +1,8 @@
 <script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import Main from './components/Main.vue';
+import Photo from './components/Photo.vue';
+
+const isPhoto = location.pathname.startsWith('/photos/photo/');
 </script>
 
 <template>
@@ -9,7 +10,8 @@ import Main from './components/Main.vue';
         <i class>WTF</i>
         · · · · · ·
     </h2>
-    <Main />
+    <Photo v-if="isPhoto" />
+    <Main v-else />
 </template>
 
 <style scoped></style>
