@@ -76,7 +76,8 @@ export function get_poster_link() {
 }
 
 export function get_photo_img() {
-    let el = document.querySelector('img.media');
+    // 真实浏览器 DOM: a.mainphoto > img (src 为 .webp, img 无 class)；静态/降级 HTML: img.media (.jpg)
+    let el = document.querySelector('a.mainphoto img') || document.querySelector('img.media');
     if (!el) return null;
     let src = el.getAttribute('src');
     if (!src) return null;
