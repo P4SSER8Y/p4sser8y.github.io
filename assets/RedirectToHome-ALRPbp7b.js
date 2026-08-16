@@ -1,0 +1,1 @@
+import{R as s}from"./QLayout-mkPH9AAz.js";import{s as a,a as r}from"./stream-PahxZduE.js";import{d as n,o as p}from"./_plugin-vue_export-helper-hEzp94Bt.js";import"./raven-7m4LwwMA.js";const g=n({__name:"RedirectToHome",setup(i){const e=a(r()),o=s();return p(()=>{let t=e.lastPage.value.length>0?e.lastPage.value:"posterWall";o.push(`/${t}`)}),()=>{}}});export{g as default};
