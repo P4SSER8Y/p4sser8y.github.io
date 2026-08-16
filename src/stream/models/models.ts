@@ -36,7 +36,8 @@ export interface TvNote {
     status: string;
     rate?: number;
     comment?: string;
-    eposides: {
+    timestamp?: string;
+    eposides?: {
         eposide: string;
         timestamp: string;
     }[];
@@ -86,7 +87,18 @@ export function classify_by_timestamp_format(
     if (isTvRecord(record)) {
         for (const note of record.notes ?? []) {
             const tmp = new Map<string, object[]>();
-            for (const eposide of note.eposides) {
+            const eposides = note.eposides ?? [];
+            if (eposides.length === 0) {
+                // 无逐集记录：用 note.timestamp 分组，至少显示一条
+                const key = note.timestamp
+                    ? dayjs(note.timestamp).format(format)
+                    : dayjs().format(format);
+                const t = { ...record };
+                t.notes = [{ ...note, eposides: [] }];
+                ret.push(t);
+                continue;
+            }
+            for (const eposide of eposides) {
                 const key = dayjs(eposide.timestamp).format(format);
                 const values = tmp.get(key) ?? [];
                 values.push(eposide);
@@ -113,11 +125,16 @@ export function get_latest_timestamp(record: Record): Dayjs {
             .reduce((a, b) => (a > b ? a : b));
     } else if (isTvRecord(record)) {
         ret = record.notes
-            ?.map((x) =>
-                x.eposides
+            ?.map((x) => {
+                const eposides = x.eposides ?? [];
+                if (eposides.length === 0) {
+                    // 无逐集记录时用 note 自身时间（如果有），否则忽略
+                    return x.timestamp ? dayjs(x.timestamp) : dayjs();
+                }
+                return eposides
                     .map((x) => dayjs(x.timestamp))
-                    .reduce((a, b) => (a > b ? a : b))
-            )
+                    .reduce((a, b) => (a > b ? a : b));
+            })
             .reduce((a, b) => (a > b ? a : b));
     }
     return dayjs(ret);

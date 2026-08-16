@@ -63,7 +63,11 @@ function formatted_date(timestamp: string | Dayjs): string {
 }
 
 function get_note_timestamp(note: TvNote) {
-    return note.eposides
+    const eposides = note.eposides ?? [];
+    if (eposides.length === 0) {
+        return note.timestamp ? dayjs(note.timestamp) : dayjs();
+    }
+    return eposides
         .map((x) => dayjs(x.timestamp))
         .reduce((a, b) => (a > b ? a : b));
 }
@@ -78,7 +82,7 @@ const latestNote = computed(() => sortedNotes?.value?.at(0));
 
 const eposideInfo = computed(
     () =>
-        `${latestNote.value?.eposides.at(0)?.eposide ?? '?'} / ${props.data.info.eposides ?? '?'
+        `${latestNote.value?.eposides?.at(0)?.eposide ?? '?'} / ${props.data.info.eposides ?? '?'
         }`
 );
 
